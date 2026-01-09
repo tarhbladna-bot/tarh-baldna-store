@@ -3,42 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>طرح بلدنا | تصدير فول سوداني من مصر</title>
 <meta name="description" content="شركة طرح بلدنا لتجارة وتصدير الفول السوداني من مصر. طلبات جملة، تصدير، تواصل واتساب، دفع عند الاستلام.">
 <meta name="keywords" content="فول سوداني, تصدير فول سوداني, فول سوداني جملة, محاصيل زراعية مصر">
-<meta name="author" content="Tarh Baldna">
-
-<!-- Open Graph -->
 <meta property="og:title" content="طرح بلدنا | فول سوداني وتصدير">
 <meta property="og:description" content="محاصيل زراعية – فول سوداني – مصر وتصدير">
 <meta property="og:type" content="website">
-
 <style>
-body{margin:0;font-family:Arial;background:#000;color:#f5c400}
+body{margin:0;font-family:Arial;background:#000;color:#f5c400;transition:all .3s}
 header{padding:20px;text-align:center;border-bottom:2px solid #f5c400}
-nav button{margin:5px;padding:8px 16px;border:none;border-radius:20px;background:#f5c400;color:#000;font-weight:bold;cursor:pointer}
-section{padding:20px;display:none}
+nav button{margin:5px;padding:8px 16px;border:none;border-radius:20px;background:#f5c400;color:#000;font-weight:bold;cursor:pointer;transition:0.3s}
+nav button:hover{opacity:0.8}
+section{padding:20px;display:none;transition:all .3s}
 .active{display:block}
 .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.product{background:#111;border-radius:15px;overflow:hidden;box-shadow:0 0 10px rgba(245,196,0,.2)}
+.product{background:#111;border-radius:15px;overflow:hidden;box-shadow:0 0 15px rgba(245,196,0,.2);transition:transform .3s}
+.product:hover{transform:scale(1.03)}
 .product img{width:100%;height:200px;object-fit:cover}
 .product div{padding:15px}
-button.action{width:100%;padding:10px;border-radius:30px;background:#f5c400;color:#000;border:none;font-weight:bold;cursor:pointer}
+button.action{width:100%;padding:10px;border-radius:30px;background:#f5c400;color:#000;border:none;font-weight:bold;cursor:pointer;transition:0.3s}
+button.action:hover{opacity:0.85}
 .cart{background:#111;border-radius:15px;padding:15px;margin-top:20px}
 input,textarea,select{width:100%;padding:8px;margin:5px 0;border-radius:8px;border:none}
 .whatsapp{
- position:fixed;
- right:20px;
- bottom:20px;
+ position:fixed;right:20px;bottom:20px;
  background:linear-gradient(135deg,#25D366,#128C7E);
- color:#fff;
- padding:15px 22px;
- border-radius:50px;
- text-decoration:none;
- font-weight:bold;
- box-shadow:0 0 15px rgba(0,0,0,.6)
+ color:#fff;padding:18px 25px;
+ border-radius:60px;font-weight:bold;
+ text-decoration:none;box-shadow:0 0 20px rgba(0,0,0,.6);
+ font-size:18px;
+ animation: bounce 2s infinite;
 }
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
 footer{text-align:center;padding:15px;border-top:1px solid #f5c400;margin-top:30px}
 </style>
 </head>
@@ -55,7 +51,6 @@ footer{text-align:center;padding:15px;border-top:1px solid #f5c400;margin-top:30
 </nav>
 </header>
 
-<!-- SHOP -->
 <section id="shop" class="active">
 <h2>قسم أنواع الفول / Peanut Types</h2>
 <div class="products" id="products"></div>
@@ -77,7 +72,6 @@ footer{text-align:center;padding:15px;border-top:1px solid #f5c400;margin-top:30
 </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
 <h2>عن شركة طرح بلدنا / About Tarh Baldna</h2>
 <p>
@@ -149,11 +143,17 @@ cartList.appendChild(li);
 }
 
 function sendOrder(){
-if(cart.length==0 || !name.value || !phone.value){
+const customerName = document.getElementById("name");
+const customerPhone = document.getElementById("phone");
+const orderType = document.getElementById("type");
+const notesField = document.getElementById("notes");
+
+if(cart.length==0 || !customerName.value || !customerPhone.value){
 alert("من فضلك أكمل البيانات / Please fill all info");
 return;
 }
-let msg=`طلب جديد / New Order:%0Aالاسم: ${name.value}%0Aالموبايل: ${phone.value}%0Aالنوع: ${type.value}%0Aالمنتجات:%0A${cart.join("%0A")}%0Aملاحظات:%0A${notes.value}`;
+
+let msg=`طلب جديد / New Order:%0Aالاسم: ${customerName.value}%0Aالموبايل: ${customerPhone.value}%0Aالنوع: ${orderType.value}%0Aالمنتجات:%0A${cart.join("%0A")}%0Aملاحظات:%0A${notesField.value}`;
 window.open("https://wa.me/01020508423?text="+msg);
 }
 
