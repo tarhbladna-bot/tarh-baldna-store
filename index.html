@@ -14,32 +14,17 @@
 <meta property="og:description" content="محاصيل زراعية – فول سوداني – مصر وتصدير">
 <meta property="og:type" content="website">
 
-<!-- Schema -->
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "Organization",
- "name": "طرح بلدنا",
- "telephone": ["+201126773698","+201020508423"],
- "email": "tarhbladna@gmail.com",
- "address": {
-   "@type": "PostalAddress",
-   "addressCountry": "EG"
- }
-}
-</script>
-
 <style>
 body{margin:0;font-family:Arial;background:#000;color:#f5c400}
 header{padding:20px;text-align:center;border-bottom:2px solid #f5c400}
 nav button{margin:5px;padding:8px 16px;border:none;border-radius:20px;background:#f5c400;color:#000;font-weight:bold;cursor:pointer}
 section{padding:20px;display:none}
 .active{display:block}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.product{background:#111;border-radius:15px;overflow:hidden}
-.product img{width:100%;height:220px;object-fit:cover}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.product{background:#111;border-radius:15px;overflow:hidden;box-shadow:0 0 10px rgba(245,196,0,.2)}
+.product img{width:100%;height:200px;object-fit:cover}
 .product div{padding:15px}
-button.action{width:100%;padding:10px;border-radius:30px;background:#f5c400;color:#000;border:none;font-weight:bold}
+button.action{width:100%;padding:10px;border-radius:30px;background:#f5c400;color:#000;border:none;font-weight:bold;cursor:pointer}
 .cart{background:#111;border-radius:15px;padding:15px;margin-top:20px}
 input,textarea,select{width:100%;padding:8px;margin:5px 0;border-radius:8px;border:none}
 .whatsapp{
@@ -54,12 +39,7 @@ input,textarea,select{width:100%;padding:8px;margin:5px 0;border-radius:8px;bord
  font-weight:bold;
  box-shadow:0 0 15px rgba(0,0,0,.6)
 }
-footer{
- text-align:center;
- padding:15px;
- border-top:1px solid #f5c400;
- margin-top:30px
-}
+footer{text-align:center;padding:15px;border-top:1px solid #f5c400;margin-top:30px}
 </style>
 </head>
 
@@ -75,28 +55,31 @@ footer{
 </nav>
 </header>
 
+<!-- SHOP -->
 <section id="shop" class="active">
+<h2>قسم أنواع الفول / Peanut Types</h2>
 <div class="products" id="products"></div>
 
 <div class="cart">
 <h3 id="cartTitle">🛒 سلة الطلب</h3>
 <ul id="cartList"></ul>
 
-<h4>بيانات العميل</h4>
-<input id="name" placeholder="الاسم">
-<input id="phone" placeholder="رقم الموبايل">
+<h4>بيانات العميل / Customer Info</h4>
+<input id="name" placeholder="الاسم / Name">
+<input id="phone" placeholder="رقم الموبايل / Phone">
 <select id="type">
-<option>طلب محلي</option>
-<option>طلب تصدير</option>
+<option>طلب محلي / Local Order</option>
+<option>طلب تصدير / Export</option>
 </select>
-<textarea id="notes" placeholder="ملاحظات"></textarea>
+<textarea id="notes" placeholder="ملاحظات / Notes"></textarea>
 
-<button class="action" onclick="sendOrder()">إرسال الطلب واتساب</button>
+<button class="action" onclick="sendOrder()">إرسال الطلب واتساب / Send WhatsApp</button>
 </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
-<h2>عن شركة طرح بلدنا</h2>
+<h2>عن شركة طرح بلدنا / About Tarh Baldna</h2>
 <p>
 شركة <strong>طرح بلدنا</strong> متخصصة في تجارة وتصدير الفول السوداني
 من مصر للأسواق المحلية والعالمية بجودة عالية.
@@ -107,7 +90,7 @@ footer{
 </p>
 </section>
 
-<a class="whatsapp" href="https://wa.me/201020508423" target="_blank">WhatsApp</a>
+<a class="whatsapp" href="https://wa.me/01020508423" target="_blank">WhatsApp</a>
 
 <footer>
 © 2026 Tarh Baldna – All Rights Reserved
@@ -125,7 +108,8 @@ cart:"🛒 سلة الطلب",
 products:[
 {name:"فول سوداني بالقشرة",img:"images/peanut-shell.jpg"},
 {name:"فول سوداني مقشر",img:"images/peanut-peeled.jpg"},
-{name:"فول سوداني مجروش",img:"images/peanut-crushed.jpg.jpeg"}
+{name:"فول سوداني مجروش",img:"images/peanut-crushed.jpg.jpeg"},
+{name:"فول سوداني حلواني",img:"images/peanut-halawani.jpg"}
 ]
 },
 en:{
@@ -135,7 +119,8 @@ cart:"🛒 Order Cart",
 products:[
 {name:"Peanut in Shell",img:"images/peanut-shell.jpg"},
 {name:"Peeled Peanut",img:"images/peanut-peeled.jpg"},
-{name:"Crushed Peanut",img:"images/peanut-crushed.jpg.jpeg"}
+{name:"Crushed Peanut",img:"images/peanut-crushed.jpg.jpeg"},
+{name:"Halawani Peanut",img:"images/peanut-halawani.jpg"}
 ]
 }
 };
@@ -151,7 +136,7 @@ products.innerHTML+=`
 <img src="${p.img}">
 <div>
 <h3>${p.name}</h3>
-<button class="action" onclick="add('${p.name}')">طلب</button>
+<button class="action" onclick="add('${p.name}')">طلب / Order</button>
 </div></div>`;
 });
 }
@@ -165,11 +150,11 @@ cartList.appendChild(li);
 
 function sendOrder(){
 if(cart.length==0 || !name.value || !phone.value){
-alert("من فضلك أكمل البيانات");
+alert("من فضلك أكمل البيانات / Please fill all info");
 return;
 }
-let msg=`طلب جديد:%0Aالاسم: ${name.value}%0Aالموبايل: ${phone.value}%0Aالنوع: ${type.value}%0Aالمنتجات:%0A${cart.join("%0A")}%0Aملاحظات:%0A${notes.value}`;
-window.open("https://wa.me/201020508423?text="+msg);
+let msg=`طلب جديد / New Order:%0Aالاسم: ${name.value}%0Aالموبايل: ${phone.value}%0Aالنوع: ${type.value}%0Aالمنتجات:%0A${cart.join("%0A")}%0Aملاحظات:%0A${notes.value}`;
+window.open("https://wa.me/01020508423?text="+msg);
 }
 
 function toggleLang(){
