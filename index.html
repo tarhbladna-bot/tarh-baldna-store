@@ -1,136 +1,214 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>شركة طرح بلدنا</title>
+<title>طرح بلدنا | Tarh Baldna</title>
+
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#000;color:#FFD700;}
-header{background:#000;padding:20px;text-align:center;border-bottom:2px solid #FFD700;}
-header h1{margin:0;font-size:32px;}
-nav{text-align:center;margin:15px;}
-nav button{padding:10px 15px;margin:5px;background:#FFD700;border:none;color:#000;font-weight:bold;cursor:pointer;border-radius:5px;}
-section{padding:20px;}
-.product{display:flex;flex-direction:column;align-items:center;margin-bottom:20px;background:#111;padding:10px;border-radius:10px;}
-.product img{max-width:200px;width:100%;border-radius:10px;}
-.product button{margin-top:10px;padding:8px 15px;border:none;border-radius:5px;cursor:pointer;background:#FFD700;color:#000;font-weight:bold;}
-#cart{position:fixed;bottom:20px;right:20px;background:#FFD700;color:#000;padding:10px 15px;border-radius:50px;cursor:pointer;font-weight:bold;}
-#exportForm{display:none;max-width:500px;margin:auto;background:#111;padding:20px;border:1px solid #FFD700;border-radius:10px;}
-#exportForm label{display:block;margin-top:10px;}
-#exportForm input,#exportForm select,#exportForm textarea{width:100%;padding:8px;margin-top:5px;border-radius:5px;border:none;}
-#exportForm button{margin-top:15px;padding:10px 20px;background:#FFD700;color:#000;border:none;font-weight:bold;cursor:pointer;border-radius:5px;}
-footer{background:#000;padding:20px;text-align:center;border-top:2px solid #FFD700;color:#fff;}
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#000;
+    color:#FFD700;
+}
+header{
+    padding:20px;
+    text-align:center;
+    border-bottom:2px solid #FFD700;
+}
+header h1{margin:0}
+
+.lang-btn{
+    position:absolute;
+    top:20px;
+    left:20px;
+    background:#FFD700;
+    color:#000;
+    padding:8px 12px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+.product{
+    background:#111;
+    padding:15px;
+    border-radius:12px;
+    text-align:center;
+}
+.product img{
+    width:100%;
+    border-radius:10px;
+}
+.product button{
+    margin-top:10px;
+    padding:8px 15px;
+    background:#FFD700;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+#cartBtn{
+    position:fixed;
+    bottom:90px;
+    right:20px;
+    background:#FFD700;
+    color:#000;
+    padding:12px 18px;
+    border-radius:30px;
+    cursor:pointer;
+    font-weight:bold;
+    z-index:1000;
+}
+
+.whatsapp-float{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:55px;
+    height:55px;
+    background:#25D366;
+    color:#fff;
+    border-radius:50%;
+    text-align:center;
+    font-size:30px;
+    line-height:55px;
+    text-decoration:none;
+    z-index:1000;
+}
+
+#reviewBox{
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:#111;
+    padding:20px;
+    border:2px solid #FFD700;
+    border-radius:10px;
+    max-width:300px;
+    width:90%;
+    z-index:2000;
+}
+
+#reviewBox button{
+    margin-top:10px;
+    width:100%;
+    padding:8px;
+    background:#FFD700;
+    border:none;
+    font-weight:bold;
+}
+
+footer{
+    text-align:center;
+    padding:15px;
+    border-top:2px solid #FFD700;
+}
 </style>
 </head>
+
 <body>
 
 <header>
-<h1>شركة طرح بلدنا</h1>
+<div class="lang-btn" onclick="toggleLang()">EN</div>
+<h1 id="title">شركة طرح بلدنا</h1>
+<p id="subtitle">محاصيل زراعية – فول سوداني</p>
 </header>
 
-<nav>
-<button onclick="toggleExportForm()">تصدير / Export</button>
-<button onclick="sendOrder()">إرسال طلب / Send Order</button>
-</nav>
-
-<section id="products">
+<section class="products">
 <div class="product">
-<img src="images/peanut-shell.jpg" alt="فول سوداني بقشره">
-<h3>فول سوداني بقشره</h3>
-<button onclick="addToCart('فول سوداني بقشره')">أضف للسلة</button>
+<img src="images/peanut-shell.jpg">
+<h3 data-ar="فول سوداني بقشره" data-en="Peanut In Shell">فول سوداني بقشره</h3>
+<button onclick="addToCart(this)">أضف للسلة</button>
 </div>
 
 <div class="product">
-<img src="images/peanut-peeled.jpg" alt="فول سوداني مقشر">
-<h3>فول سوداني مقشر</h3>
-<button onclick="addToCart('فول سوداني مقشر')">أضف للسلة</button>
+<img src="images/peanut-peeled.jpg">
+<h3 data-ar="فول سوداني مقشر" data-en="Peeled Peanut">فول سوداني مقشر</h3>
+<button onclick="addToCart(this)">أضف للسلة</button>
 </div>
 
 <div class="product">
-<img src="images/peanut-crushed.jpg" alt="فول سوداني مجروش">
-<h3>فول سوداني مجروش</h3>
-<button onclick="addToCart('فول سوداني مجروش')">أضف للسلة</button>
+<img src="images/peanut-crushed.jpg">
+<h3 data-ar="فول سوداني مجروش" data-en="Crushed Peanut">فول سوداني مجروش</h3>
+<button onclick="addToCart(this)">أضف للسلة</button>
 </div>
 
 <div class="product">
-<img src="images/peanut-halawani.jpg" alt="فول سوداني حلواني">
-<h3>فول سوداني حلواني</h3>
-<button onclick="addToCart('فول سوداني حلواني')">أضف للسلة</button>
+<img src="images/peanut-halawani.jpg">
+<h3 data-ar="فول سوداني حلواني" data-en="Halawani Peanut">فول سوداني حلواني</h3>
+<button onclick="addToCart(this)">أضف للسلة</button>
 </div>
 </section>
 
-<section id="exportForm">
-<h2 style="text-align:center;">نموذج التصدير / Export Form</h2>
-<label>الدولة / Country:</label>
-<input type="text" id="country" placeholder="اكتب الدولة">
-<label>الكمية / Quantity:</label>
-<input type="text" id="quantity" placeholder="اكتب الكمية">
-<label>نوع التعبئة / Packaging:</label>
-<select id="packaging">
-<option value="بقشره">فول سوداني بقشره</option>
-<option value="مقشر">فول سوداني مقشر</option>
-<option value="مجروش">فول سوداني مجروش</option>
-<option value="حلواني">فول سوداني حلواني</option>
-</select>
-<label>ملاحظات / Notes:</label>
-<textarea id="notes" placeholder="أي ملاحظات إضافية"></textarea>
-<button type="button" onclick="sendExport()">إرسال الطلب</button>
-</section>
+<div id="cartBtn" onclick="showReview()">مراجعة الطلب</div>
 
-<div id="cart" onclick="sendOrder()">سلة الطلبات 🛒</div>
+<div id="reviewBox">
+<h3>مراجعة الطلب</h3>
+<ul id="cartList"></ul>
+<button onclick="sendWhats()">إرسال واتساب</button>
+<button onclick="closeReview()">إغلاق</button>
+</div>
 
-<script>
-let cart = [];
-
-function addToCart(item){
-    cart.push(item);
-    alert(item + " تم الإضافة للسلة");
-}
-
-function sendOrder(){
-    if(cart.length===0){
-        alert("السلة فارغة");
-        return;
-    }
-    let text = "طلب عرض سعر:\n" + cart.join("\n");
-
-    // واتساب
-    window.open("https://wa.me/201126773698?text=" + encodeURIComponent(text), "_blank");
-
-    // ايميل
-    window.location.href = "mailto:tarhbladna@gmail.com?subject=طلب عرض سعر&body=" + encodeURIComponent(text);
-}
-
-function toggleExportForm(){
-    let form = document.getElementById("exportForm");
-    form.style.display = (form.style.display==="none" || form.style.display==="") ? "block" : "none";
-}
-
-function sendExport(){
-    let country = document.getElementById("country").value;
-    let quantity = document.getElementById("quantity").value;
-    let packaging = document.getElementById("packaging").value;
-    let notes = document.getElementById("notes").value;
-
-    if(!country || !quantity){
-        alert("الرجاء ملء الدولة والكمية");
-        return;
-    }
-
-    let text = `طلب تصدير:\nالدولة: ${country}\nالكمية: ${quantity}\nالتعبئة: ${packaging}\nملاحظات: ${notes}`;
-
-    // واتساب
-    window.open(`https://wa.me/201126773698?text=${encodeURIComponent(text)}`, "_blank");
-
-    // ايميل
-    window.location.href = `mailto:tarhbladna@gmail.com?subject=طلب تصدير&body=${encodeURIComponent(text)}`;
-}
-</script>
+<a class="whatsapp-float" href="https://wa.me/201126773698" target="_blank">💬</a>
 
 <footer>
-📱 01126773698 | ✉️ tarhbladna@gmail.com | © شركة طرح بلدنا
+📱 01126773698 | ✉️ tarhbladna@gmail.com<br>
+© طرح بلدنا – مصر & تصدير
 </footer>
+
+<script>
+let cart=[];
+let isArabic=true;
+
+function addToCart(btn){
+    let name=btn.previousElementSibling.innerText;
+    cart.push(name);
+    alert("تمت الإضافة");
+}
+
+function showReview(){
+    if(cart.length===0){alert("السلة فارغة");return;}
+    let list=document.getElementById("cartList");
+    list.innerHTML="";
+    cart.forEach(i=>{
+        let li=document.createElement("li");
+        li.textContent=i;
+        list.appendChild(li);
+    });
+    document.getElementById("reviewBox").style.display="block";
+}
+
+function closeReview(){
+    document.getElementById("reviewBox").style.display="none";
+}
+
+function sendWhats(){
+    let text="طلب عرض سعر:%0A"+cart.join("%0A");
+    window.open("https://wa.me/201126773698?text="+text,"_blank");
+}
+
+function toggleLang(){
+    isArabic=!isArabic;
+    document.querySelector(".lang-btn").innerText=isArabic?"EN":"AR";
+    document.querySelectorAll("h3").forEach(h=>{
+        h.innerText=isArabic?h.dataset.ar:h.dataset.en;
+    });
+    document.getElementById("title").innerText=isArabic?"شركة طرح بلدنا":"Tarh Baldna";
+    document.getElementById("subtitle").innerText=isArabic?"محاصيل زراعية – فول سوداني":"Agricultural Crops – Peanuts";
+}
+</script>
 
 </body>
 </html>
