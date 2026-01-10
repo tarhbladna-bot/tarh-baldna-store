@@ -15,6 +15,7 @@ body{
 header{
   display:flex;
   align-items:center;
+  justify-content:space-between;
   padding:15px 25px;
   background:#b30000;
   position:sticky;
@@ -22,7 +23,6 @@ header{
   z-index:1000;
 }
 
-/* السلة الكبيرة على اليسار */
 .cart-btn{
   position:fixed;
   top:20px;
@@ -36,7 +36,6 @@ header{
   z-index:1000;
 }
 
-/* العنوان في منتصف الهيدر */
 header h1{
   flex:1;
   text-align:center;
@@ -45,7 +44,6 @@ header h1{
   font-weight:bold;
 }
 
-/* أيقونات الهيدر على اليمين */
 .header-icons{
   display:flex;
   gap:20px;
@@ -91,13 +89,15 @@ header h1{
   width:100%;
   border-radius:12px;
   cursor:pointer;
-  transition:0.25s;
+  transition:0.4s ease;
+  box-shadow:0 2px 8px rgba(0,0,0,0.4);
 }
 .card img.main:hover{
-  transform:scale(1.02);
+  transform:scale(1.08);
+  box-shadow:0 6px 18px rgba(0,0,0,0.6);
 }
 
-/* ===== Thumbnails ===== */
+/* Thumbnails */
 .thumbs{
   display:flex;
   gap:6px;
@@ -118,7 +118,7 @@ header h1{
   transform:scale(1.1);
 }
 
-/* ===== Quantity Input ===== */
+/* Quantity */
 .quantity{
   margin-top:8px;
   display:flex;
@@ -133,7 +133,7 @@ header h1{
   text-align:center;
 }
 
-/* ===== Actions ===== */
+/* Actions */
 .actions{
   display:flex;
   justify-content:space-between;
@@ -146,7 +146,7 @@ header h1{
   cursor:pointer;
 }
 
-/* ===== Cart ===== */
+/* Cart */
 .cart{
   display:none;
   position:fixed;
@@ -175,7 +175,7 @@ header h1{
   cursor:pointer
 }
 
-/* ===== Modal About ===== */
+/* Modal About */
 .overlay{
   display:none;
   position:fixed;
@@ -192,7 +192,7 @@ header h1{
   border-radius:15px
 }
 
-/* ===== Floating Export ===== */
+/* Floating Export */
 .fab{
   position:fixed;
   bottom:20px;
@@ -206,7 +206,15 @@ header h1{
   align-items:center;
   justify-content:center;
   font-weight:bold;
-  cursor:pointer
+  font-size:24px;
+  cursor:pointer;
+  box-shadow:0 4px 12px rgba(0,0,0,0.4);
+  transition:0.3s;
+  z-index:9999;
+}
+.fab:hover{
+  transform:scale(1.1);
+  box-shadow:0 6px 18px rgba(0,0,0,0.6);
 }
 </style>
 </head>
@@ -231,7 +239,7 @@ header h1{
 <div class="icon-circle">✉</div>
 <div>الإيميل</div>
 </a>
-<a href="https://wa.me/201126773698" target="_blank">
+<a href="https://wa.me/20112677323" target="_blank">
 <div class="icon-circle">💬</div>
 <div>واتساب</div>
 </a>
@@ -255,7 +263,7 @@ header h1{
   </div>
   <div class="actions">
     <a onclick="add('فول سوداني بقشره',1,'السعر عند الطلب')">➕ سلة</a>
-    <a href="https://wa.me/201126773698" target="_blank">واتساب</a>
+    <a href="https://wa.me/01020508423" target="_blank">واتساب</a>
     <a onclick="openAbout()">من نحن</a>
   </div>
 </div>
@@ -291,7 +299,7 @@ header h1{
   </div>
   <div class="actions">
     <a onclick="add('فول سوداني مجروش',3,'السعر عند الطلب')">➕ سلة</a>
-    <a href="https://wa.me/201126773698" target="_blank">واتساب</a>
+    <a href="https://wa.me/01020508423" target="_blank">واتساب</a>
     <a onclick="openAbout()">من نحن</a>
   </div>
 </div>
@@ -329,21 +337,22 @@ header h1{
   <div class="modal">
     <h3>من نحن</h3>
     <p>شركة <b>طرح بلدنا</b> متخصصة في إنتاج وتوريد الفول السوداني بجميع أنواعه بأعلى جودة.</p>
-    <p>📞 01126773698</p>
+    <p>📞 01020508423</p>
     <p>✉ tarhbladna@gmail.com</p>
     <button onclick="closeAbout()">إغلاق</button>
   </div>
 </div>
 
+<!-- Floating Export -->
+<div class="fab" onclick="window.location.href='export.html'" title="تصدير الطلبات">⤴</div>
+
 <script>
 let cart=[];
-
 function add(name,id,price){
   let qty = document.getElementById('q'+id).value;
   cart.push(`${name} | الكمية: ${qty} | ${price}`);
   renderCart();
 }
-
 function renderCart(){
   let ul=document.getElementById('cartItems');
   ul.innerHTML='';
@@ -353,36 +362,24 @@ function renderCart(){
     ul.appendChild(li);
   });
 }
-
 function toggleCart(){
   let c=document.getElementById('cart');
   c.style.display = c.style.display=='block'?'none':'block';
 }
-
-function clearCart(){
-  cart=[];
-  renderCart();
-}
-
+function clearCart(){cart=[];renderCart();}
 function sendWhatsApp(){
-  if(cart.length===0){
-    alert('السلة فارغة');
-    return;
-  }
+  if(cart.length===0){alert('السلة فارغة');return;}
   let msg = 'طلب:\n' + cart.join('\n');
-  let url = 'https://wa.me/201126773698?text=' + encodeURIComponent(msg);
+  let url = 'https://wa.me/01020508423?text=' + encodeURIComponent(msg);
   window.open(url,'_blank');
 }
-
 function openAbout(){document.getElementById('about').style.display='block'}
 function closeAbout(){document.getElementById('about').style.display='none'}
-
 function changeImg(el,id){
   document.getElementById(id).src=el.src;
   el.parentElement.querySelectorAll('img').forEach(i=>i.classList.remove('active'));
   el.classList.add('active');
 }
-
 function zoom(src){
   let z=document.createElement('div');
   z.style='position:fixed;inset:0;background:rgba(0,0,0,.8);display:flex;align-items:center;justify-content:center';
