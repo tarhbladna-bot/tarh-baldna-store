@@ -217,7 +217,7 @@ max-height:90%;
 border-radius:15px;
 }
 
-/* ===== About ===== */
+/* ===== About (إضافة فقط) ===== */
 .about{
 position:fixed;
 top:0;left:0;
@@ -295,7 +295,55 @@ flex-wrap:wrap;
 </div>
 
 <div class="products" id="products">
-<!-- المنتجات كما هي بدون تغيير -->
+
+<!-- فول سوداني بقشره -->
+<div class="product">
+<img class="main-img" src="images/peanut-shell-1.jpg" onclick="openLightbox(this)">
+<h2>فول سوداني بقشره</h2>
+<p>السعر عند الطلب</p>
+<button onclick="add('فول سوداني بقشره')">أضف للسلة</button>
+<div class="product-gallery">
+<img src="images/peanut-shell-2.jpg" class="selected" onclick="changeMainImage(this)">
+<img src="images/peanut-shell-3.jpg" onclick="changeMainImage(this)">
+</div>
+</div>
+
+<!-- فول سوداني مقشر -->
+<div class="product">
+<img class="main-img" src="images/peanut-shelled-1.jpg" onclick="openLightbox(this)">
+<h2>فول سوداني مقشر</h2>
+<p>السعر عند الطلب</p>
+<button onclick="add('فول سوداني مقشر')">أضف للسلة</button>
+<div class="product-gallery">
+<img src="images/peanut-shelled-2.jpg" class="selected" onclick="changeMainImage(this)">
+<img src="images/peanut-shelled-3.jpg" onclick="changeMainImage(this)">
+</div>
+</div>
+
+<!-- فول سوداني مجروش -->
+<div class="product">
+<img class="main-img" src="images/peanut-crushed-1.jpg" onclick="openLightbox(this)">
+<h2>فول سوداني مجروش</h2>
+<p>السعر عند الطلب</p>
+<button onclick="add('فول سوداني مجروش')">أضف للسلة</button>
+<div class="product-gallery">
+<img src="images/peanut-crushed-2.jpg" class="selected" onclick="changeMainImage(this)">
+<img src="images/peanut-crushed-3.jpg" onclick="changeMainImage(this)">
+</div>
+</div>
+
+<!-- فول سوداني حلواني -->
+<div class="product">
+<img class="main-img" src="images/peanut-halawani-1.jpg" onclick="openLightbox(this)">
+<h2>فول سوداني حلواني</h2>
+<p>السعر عند الطلب</p>
+<button onclick="add('فول سوداني حلواني')">أضف للسلة</button>
+<div class="product-gallery">
+<img src="images/peanut-halawani-2.jpg" class="selected" onclick="changeMainImage(this)">
+<img src="images/peanut-halawani-3.jpg" onclick="changeMainImage(this)">
+</div>
+</div>
+
 </div>
 
 <a class="whatsapp" href="https://wa.me/201126773698" target="_blank">💬</a>
@@ -305,6 +353,7 @@ flex-wrap:wrap;
 <img id="lightbox-img">
 </div>
 
+<!-- نافذة من نحن (إضافة فقط) -->
 <div class="about" id="about">
 <div class="about-box">
 <h2>من نحن</h2>
@@ -313,6 +362,27 @@ flex-wrap:wrap;
 بجميع أنواعه بجودة عالية وتواصل مباشر مع العملاء.
 </p>
 <button onclick="closeAbout()">إغلاق</button>
+</div>
+</div>
+
+<div class="footer-icons">
+<div class="footer-item">
+<p>🛒 السلة</p>
+<p>عدد المنتجات: <span id="footer-count">0</span></p>
+</div>
+<div class="footer-item">
+<p>📦 المنتجات</p>
+<p>عدد أنواع الفول: 4</p>
+</div>
+<div class="footer-item">
+<p>ℹ من نحن</p>
+<p>نبذة عن الشركة</p>
+</div>
+<div class="footer-item">
+<p>✉ tarhbladna@gmail.com</p>
+</div>
+<div class="footer-item">
+<p>📞 واتساب 01020508423</p>
 </div>
 </div>
 
@@ -332,6 +402,7 @@ let li=document.createElement('li');
 li.textContent=i;
 ul.appendChild(li);
 });
+document.getElementById('footer-count').textContent=cart.length;
 }
 
 function clearCart(){
@@ -357,13 +428,14 @@ function closeLightbox(){
 document.getElementById('lightbox').style.display='none';
 }
 
-function openAbout(){
-document.getElementById('about').style.display='flex';
-}
-function closeAbout(){
-document.getElementById('about').style.display='none';
+function changeMainImage(el){
+let product = el.closest('.product');
+product.querySelector('.main-img').src = el.src;
+product.querySelectorAll('.product-gallery img').forEach(img=>img.classList.remove('selected'));
+el.classList.add('selected');
 }
 
+/* ===== Export (تعديل الدالة فقط) ===== */
 function exportCart(){
 if(cart.length===0){alert('السلة فارغة');return;}
 let text = cart.join('\n');
@@ -372,6 +444,14 @@ let a = document.createElement('a');
 a.href = URL.createObjectURL(blob);
 a.download = 'cart.txt';
 a.click();
+}
+
+/* ===== About ===== */
+function openAbout(){
+document.getElementById('about').style.display='flex';
+}
+function closeAbout(){
+document.getElementById('about').style.display='none';
 }
 </script>
 
