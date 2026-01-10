@@ -14,7 +14,6 @@ body{
 /* ===== Header ===== */
 header{
   display:flex;
-  justify-content:space-between;
   align-items:center;
   padding:15px 25px;
   background:#b30000;
@@ -22,15 +21,26 @@ header{
   top:0;
   z-index:1000;
 }
-header h1{
-  margin:0;
-  font-size:24px;
+
+/* السلة الكبيرة ثابتة على اليسار */
+.cart-btn{
+  position:fixed;
+  top:20px;
+  left:20px;
+  background:#fff;
+  color:#b30000;
+  padding:10px 16px;
+  border-radius:30px;
+  cursor:pointer;
   font-weight:bold;
+  z-index:1000;
 }
+
+/* أيقونات الهيدر بعيد عن السلة الكبيرة */
 .header-icons{
   display:flex;
   gap:20px;
-  margin-right:20px; /* حركت الأيقونات شويه لليمين */
+  margin-left:150px; /* المسافة عن السلة الكبيرة */
 }
 .header-icons a{
   text-decoration:none;
@@ -129,18 +139,6 @@ header h1{
 }
 
 /* ===== Cart ===== */
-.cart-btn{
-  position:fixed;
-  top:20px;
-  left:20px;
-  background:#fff;
-  color:#b30000;
-  padding:10px 16px;
-  border-radius:30px;
-  cursor:pointer;
-  font-weight:bold;
-  z-index:1000;
-}
 .cart{
   display:none;
   position:fixed;
