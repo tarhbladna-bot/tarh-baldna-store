@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>طرح بلدنا 1</title>
-
 <style>
 body{
   margin:0;
@@ -25,17 +24,17 @@ header h2{margin:6px 0 0;font-weight:normal}
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:20px;
-  padding:20px;
+  padding:20px
 }
 .card{
   background:#8c0000;
   padding:12px;
-  border-radius:14px;
+  border-radius:14px
 }
 .card img.main{
   width:100%;
   border-radius:12px;
-  cursor:pointer;
+  cursor:pointer
 }
 
 /* ===== Thumbnails ===== */
@@ -43,7 +42,7 @@ header h2{margin:6px 0 0;font-weight:normal}
   display:flex;
   gap:6px;
   justify-content:center;
-  margin-top:8px;
+  margin-top:8px
 }
 .thumbs img{
   width:60px;
@@ -63,7 +62,7 @@ header h2{margin:6px 0 0;font-weight:normal}
 .actions{
   display:flex;
   justify-content:space-between;
-  margin-top:10px;
+  margin-top:10px
 }
 .actions a{
   color:#fff;
@@ -83,7 +82,7 @@ header h2{margin:6px 0 0;font-weight:normal}
   border-radius:30px;
   cursor:pointer;
   font-weight:bold;
-  z-index:1000;
+  z-index:1000
 }
 .cart{
   display:none;
@@ -94,7 +93,7 @@ header h2{margin:6px 0 0;font-weight:normal}
   background:#8c0000;
   padding:15px;
   border-radius:15px;
-  z-index:1000;
+  z-index:1000
 }
 .cart h3{margin-top:0}
 .cart ul{padding:0;list-style:none}
@@ -102,7 +101,7 @@ header h2{margin:6px 0 0;font-weight:normal}
   background:#b30000;
   margin-bottom:6px;
   padding:6px;
-  border-radius:6px;
+  border-radius:6px
 }
 .cart button{
   width:100%;
@@ -110,7 +109,7 @@ header h2{margin:6px 0 0;font-weight:normal}
   border:none;
   padding:8px;
   border-radius:8px;
-  cursor:pointer;
+  cursor:pointer
 }
 
 /* ===== Modal (Export + About) ===== */
@@ -119,7 +118,7 @@ header h2{margin:6px 0 0;font-weight:normal}
   position:fixed;
   inset:0;
   background:rgba(0,0,0,.85);
-  z-index:2000;
+  z-index:2000
 }
 .modal{
   background:#8c0000;
@@ -127,7 +126,7 @@ header h2{margin:6px 0 0;font-weight:normal}
   max-width:420px;
   margin:10% auto;
   padding:20px;
-  border-radius:15px;
+  border-radius:15px
 }
 
 /* ===== Floating Export ===== */
@@ -144,11 +143,10 @@ header h2{margin:6px 0 0;font-weight:normal}
   align-items:center;
   justify-content:center;
   font-weight:bold;
-  cursor:pointer;
+  cursor:pointer
 }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -160,7 +158,7 @@ header h2{margin:6px 0 0;font-weight:normal}
 
 <section class="products">
 
-<!-- بقشره -->
+<!-- فول سوداني بقشره -->
 <div class="card">
   <img src="images/peanut-shell-1.jpg" class="main" id="m1" onclick="zoom(this.src)">
   <div class="thumbs">
@@ -175,7 +173,7 @@ header h2{margin:6px 0 0;font-weight:normal}
   </div>
 </div>
 
-<!-- مقشر -->
+<!-- فول سوداني مقشر -->
 <div class="card">
   <img src="images/peanut-shelled-1.jpg" class="main" id="m2" onclick="zoom(this.src)">
   <div class="thumbs">
@@ -185,6 +183,36 @@ header h2{margin:6px 0 0;font-weight:normal}
   </div>
   <div class="actions">
     <a onclick="add('فول سوداني مقشر')">➕ سلة</a>
+    <a href="mailto:tarhbladna@gmail.com">إيميل</a>
+    <a onclick="openAbout()">من نحن</a>
+  </div>
+</div>
+
+<!-- فول سوداني مجروش -->
+<div class="card">
+  <img src="images/peanut-crushed-1.jpg" class="main" id="m3" onclick="zoom(this.src)">
+  <div class="thumbs">
+    <img src="images/peanut-crushed-1.jpg" class="active" onclick="changeImg(this,'m3')">
+    <img src="images/peanut-crushed-2.jpg" onclick="changeImg(this,'m3')">
+    <img src="images/peanut-crushed-3.jpg" onclick="changeImg(this,'m3')">
+  </div>
+  <div class="actions">
+    <a onclick="add('فول سوداني مجروش')">➕ سلة</a>
+    <a href="https://wa.me/201126773698" target="_blank">واتساب</a>
+    <a onclick="openAbout()">من نحن</a>
+  </div>
+</div>
+
+<!-- فول سوداني حلواني -->
+<div class="card">
+  <img src="images/peanut-halawani-1.jpg" class="main" id="m4" onclick="zoom(this.src)">
+  <div class="thumbs">
+    <img src="images/peanut-halawani-1.jpg" class="active" onclick="changeImg(this,'m4')">
+    <img src="images/peanut-halawani-2.jpg" onclick="changeImg(this,'m4')">
+    <img src="images/peanut-halawani-3.jpg" onclick="changeImg(this,'m4')">
+  </div>
+  <div class="actions">
+    <a onclick="add('فول سوداني حلواني')">➕ سلة</a>
     <a href="mailto:tarhbladna@gmail.com">إيميل</a>
     <a onclick="openAbout()">من نحن</a>
   </div>
@@ -214,10 +242,7 @@ header h2{margin:6px 0 0;font-weight:normal}
 <div class="overlay" id="about">
   <div class="modal">
     <h3>من نحن</h3>
-    <p>
-      شركة <b>طرح بلدنا</b> متخصصة في إنتاج وتوريد
-      الفول السوداني بجميع أنواعه بأعلى جودة.
-    </p>
+    <p>شركة <b>طرح بلدنا</b> متخصصة في إنتاج وتوريد الفول السوداني بجميع أنواعه بأعلى جودة.</p>
     <p>📞 01126773698</p>
     <p>✉ tarhbladna@gmail.com</p>
     <button onclick="closeAbout()">إغلاق</button>
