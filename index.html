@@ -29,7 +29,7 @@ header h1{
 }
 .header-icons{
   display:flex;
-  gap:15px;
+  gap:20px;
 }
 .header-icons a{
   text-decoration:none;
@@ -72,6 +72,10 @@ header h1{
   width:100%;
   border-radius:12px;
   cursor:pointer;
+  transition:0.25s;
+}
+.card img.main:hover{
+  transform:scale(1.02);
 }
 
 /* ===== Thumbnails ===== */
@@ -93,6 +97,21 @@ header h1{
 .thumbs img.active{
   border:2px solid #fff;
   transform:scale(1.1);
+}
+
+/* ===== Quantity Input ===== */
+.quantity{
+  margin-top:8px;
+  display:flex;
+  justify-content:center;
+  gap:6px;
+}
+.quantity input{
+  width:50px;
+  padding:4px;
+  border-radius:6px;
+  border:none;
+  text-align:center;
 }
 
 /* ===== Actions ===== */
@@ -126,7 +145,7 @@ header h1{
   position:fixed;
   top:70px;
   left:20px;
-  width:260px;
+  width:280px;
   background:#8c0000;
   padding:15px;
   border-radius:15px;
@@ -149,7 +168,7 @@ header h1{
   cursor:pointer
 }
 
-/* ===== Modal (Export + About) ===== */
+/* ===== Modal About ===== */
 .overlay{
   display:none;
   position:fixed;
@@ -224,8 +243,11 @@ header h1{
     <img src="images/peanut-shell-2.jpg" onclick="changeImg(this,'m1')">
     <img src="images/peanut-shell-3.jpg" onclick="changeImg(this,'m1')">
   </div>
+  <div class="quantity">
+    <label>الكمية: <input type="number" id="q1" min="1" value="1"></label>
+  </div>
   <div class="actions">
-    <a onclick="add('فول سوداني بقشره')">➕ سلة</a>
+    <a onclick="add('فول سوداني بقشره',1,'السعر عند الطلب')">➕ سلة</a>
     <a href="https://wa.me/201126773698" target="_blank">واتساب</a>
     <a onclick="openAbout()">من نحن</a>
   </div>
@@ -239,8 +261,11 @@ header h1{
     <img src="images/peanut-shelled-2.jpg" onclick="changeImg(this,'m2')">
     <img src="images/peanut-shelled-3.jpg" onclick="changeImg(this,'m2')">
   </div>
+  <div class="quantity">
+    <label>الكمية: <input type="number" id="q2" min="1" value="1"></label>
+  </div>
   <div class="actions">
-    <a onclick="add('فول سوداني مقشر')">➕ سلة</a>
+    <a onclick="add('فول سوداني مقشر',2,'السعر عند الطلب')">➕ سلة</a>
     <a href="mailto:tarhbladna@gmail.com">إيميل</a>
     <a onclick="openAbout()">من نحن</a>
   </div>
@@ -254,8 +279,11 @@ header h1{
     <img src="images/peanut-crushed-2.jpg" onclick="changeImg(this,'m3')">
     <img src="images/peanut-crushed-3.jpg" onclick="changeImg(this,'m3')">
   </div>
+  <div class="quantity">
+    <label>الكمية: <input type="number" id="q3" min="1" value="1"></label>
+  </div>
   <div class="actions">
-    <a onclick="add('فول سوداني مجروش')">➕ سلة</a>
+    <a onclick="add('فول سوداني مجروش',3,'السعر عند الطلب')">➕ سلة</a>
     <a href="https://wa.me/201126773698" target="_blank">واتساب</a>
     <a onclick="openAbout()">من نحن</a>
   </div>
@@ -269,8 +297,11 @@ header h1{
     <img src="images/peanut-halawani-2.jpg" onclick="changeImg(this,'m4')">
     <img src="images/peanut-halawani-3.jpg" onclick="changeImg(this,'m4')">
   </div>
+  <div class="quantity">
+    <label>الكمية: <input type="number" id="q4" min="1" value="1"></label>
+  </div>
   <div class="actions">
-    <a onclick="add('فول سوداني حلواني')">➕ سلة</a>
+    <a onclick="add('فول سوداني حلواني',4,'السعر عند الطلب')">➕ سلة</a>
     <a href="mailto:tarhbladna@gmail.com">إيميل</a>
     <a onclick="openAbout()">من نحن</a>
   </div>
@@ -282,18 +313,8 @@ header h1{
 <div class="cart" id="cart">
   <h3>سلة الطلب</h3>
   <ul id="cartItems"></ul>
-  <button onclick="openExport()">تصدير</button>
+  <button onclick="sendWhatsApp()">ارسال واتساب</button>
   <button onclick="clearCart()">تفريغ السلة</button>
-</div>
-
-<!-- Export -->
-<div class="overlay" id="export">
-  <div class="modal">
-    <h3>تصدير الطلب</h3>
-    <div id="exportData"></div>
-    <br>
-    <button onclick="closeExport()">إغلاق</button>
-  </div>
 </div>
 
 <!-- About -->
@@ -307,13 +328,12 @@ header h1{
   </div>
 </div>
 
-<div class="fab" onclick="openExport()">⇪</div>
-
 <script>
 let cart=[];
 
-function add(item){
-  cart.push(item);
+function add(name,id,price){
+  let qty = document.getElementById('q'+id).value;
+  cart.push(`${name} | الكمية: ${qty} | ${price}`);
   renderCart();
 }
 
@@ -337,21 +357,18 @@ function clearCart(){
   renderCart();
 }
 
-function openExport(){
-  document.getElementById('export').style.display='block';
-  document.getElementById('exportData').innerHTML=
-    cart.length ? cart.join('<br>') : 'السلة فارغة';
-}
-function closeExport(){
-  document.getElementById('export').style.display='none';
+function sendWhatsApp(){
+  if(cart.length===0){
+    alert('السلة فارغة');
+    return;
+  }
+  let msg = 'طلب:\n' + cart.join('\n');
+  let url = 'https://wa.me/201126773698?text=' + encodeURIComponent(msg);
+  window.open(url,'_blank');
 }
 
-function openAbout(){
-  document.getElementById('about').style.display='block';
-}
-function closeAbout(){
-  document.getElementById('about').style.display='none';
-}
+function openAbout(){document.getElementById('about').style.display='block'}
+function closeAbout(){document.getElementById('about').style.display='none'}
 
 function changeImg(el,id){
   document.getElementById(id).src=el.src;
