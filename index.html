@@ -231,7 +231,7 @@ header h1{
 
 <section class="products">
 
-<!-- مثال على منتج واحد، نفس الفكرة لكل المنتجات الأربعة -->
+<!-- فول سوداني بقشره -->
 <div class="card">
   <img src="images/peanut-shell-1.jpg" class="main" id="m1" onclick="zoom(this.src)">
   <div class="thumbs">
@@ -249,7 +249,59 @@ header h1{
   </div>
 </div>
 
-<!-- كرر لكل المنتجات الأربعة -->
+<!-- فول سوداني مقشر -->
+<div class="card">
+  <img src="images/peanut-shelled-1.jpg" class="main" id="m2" onclick="zoom(this.src)">
+  <div class="thumbs">
+    <img src="images/peanut-shelled-1.jpg" class="active" onclick="changeImg(this,'m2')">
+    <img src="images/peanut-shelled-2.jpg" onclick="changeImg(this,'m2')">
+    <img src="images/peanut-shelled-3.jpg" onclick="changeImg(this,'m2')">
+  </div>
+  <div class="quantity">
+    <label>الكمية: <input type="number" id="q2" min="1" value="1"></label>
+  </div>
+  <div class="actions">
+    <a onclick="add('فول سوداني مقشر',2,'السعر عند الطلب')">➕ سلة</a>
+    <a href="mailto:tarhbladna@gmail.com">إيميل</a>
+    <a onclick="openAbout()">من نحن</a>
+  </div>
+</div>
+
+<!-- فول سوداني مجروش -->
+<div class="card">
+  <img src="images/peanut-crushed-1.jpg" class="main" id="m3" onclick="zoom(this.src)">
+  <div class="thumbs">
+    <img src="images/peanut-crushed-1.jpg" class="active" onclick="changeImg(this,'m3')">
+    <img src="images/peanut-crushed-2.jpg" onclick="changeImg(this,'m3')">
+    <img src="images/peanut-crushed-3.jpg" onclick="changeImg(this,'m3')">
+  </div>
+  <div class="quantity">
+    <label>الكمية: <input type="number" id="q3" min="1" value="1"></label>
+  </div>
+  <div class="actions">
+    <a onclick="add('فول سوداني مجروش',3,'السعر عند الطلب')">➕ سلة</a>
+    <a href="https://wa.me/201126773698" target="_blank">واتساب</a>
+    <a onclick="openAbout()">من نحن</a>
+  </div>
+</div>
+
+<!-- فول سوداني حلواني -->
+<div class="card">
+  <img src="images/peanut-halawani-1.jpg" class="main" id="m4" onclick="zoom(this.src)">
+  <div class="thumbs">
+    <img src="images/peanut-halawani-1.jpg" class="active" onclick="changeImg(this,'m4')">
+    <img src="images/peanut-halawani-2.jpg" onclick="changeImg(this,'m4')">
+    <img src="images/peanut-halawani-3.jpg" onclick="changeImg(this,'m4')">
+  </div>
+  <div class="quantity">
+    <label>الكمية: <input type="number" id="q4" min="1" value="1"></label>
+  </div>
+  <div class="actions">
+    <a onclick="add('فول سوداني حلواني',4,'السعر عند الطلب')">➕ سلة</a>
+    <a href="mailto:tarhbladna@gmail.com">إيميل</a>
+    <a onclick="openAbout()">من نحن</a>
+  </div>
+</div>
 
 </section>
 
@@ -257,8 +309,18 @@ header h1{
 <div class="cart" id="cart">
   <h3>سلة الطلب</h3>
   <ul id="cartItems"></ul>
-  <button onclick="sendWhatsApp()">ارسال واتساب</button>
+  <button onclick="openExport()">تصدير</button>
   <button onclick="clearCart()">تفريغ السلة</button>
+</div>
+
+<!-- Export -->
+<div class="overlay" id="export">
+  <div class="modal">
+    <h3>تصدير الطلب</h3>
+    <div id="exportData"></div>
+    <br>
+    <button onclick="closeExport()">إغلاق</button>
+  </div>
 </div>
 
 <!-- About -->
@@ -271,6 +333,8 @@ header h1{
     <button onclick="closeAbout()">إغلاق</button>
   </div>
 </div>
+
+<div class="fab" onclick="openExport()">⇪</div>
 
 <script>
 let cart=[];
@@ -301,18 +365,21 @@ function clearCart(){
   renderCart();
 }
 
-function sendWhatsApp(){
-  if(cart.length===0){
-    alert('السلة فارغة');
-    return;
-  }
-  let msg = 'طلب:\n' + cart.join('\n');
-  let url = 'https://wa.me/201126773698?text=' + encodeURIComponent(msg);
-  window.open(url,'_blank');
+function openExport(){
+  document.getElementById('export').style.display='block';
+  document.getElementById('exportData').innerHTML=
+    cart.length ? cart.join('<br>') : 'السلة فارغة';
+}
+function closeExport(){
+  document.getElementById('export').style.display='none';
 }
 
-function openAbout(){document.getElementById('about').style.display='block'}
-function closeAbout(){document.getElementById('about').style.display='none'}
+function openAbout(){
+  document.getElementById('about').style.display='block';
+}
+function closeAbout(){
+  document.getElementById('about').style.display='none';
+}
 
 function changeImg(el,id){
   document.getElementById(id).src=el.src;
@@ -328,5 +395,6 @@ function zoom(src){
   document.body.appendChild(z);
 }
 </script>
+
 </body>
 </html>
