@@ -29,7 +29,7 @@ header h1{
 }
 .header-icons{
   display:flex;
-  gap:20px; /* تباعد أكبر عن السلة */
+  gap:15px;
 }
 .header-icons a{
   text-decoration:none;
@@ -95,21 +95,6 @@ header h1{
   transform:scale(1.1);
 }
 
-/* ===== Quantity Input ===== */
-.quantity{
-  margin-top:8px;
-  display:flex;
-  justify-content:center;
-  gap:6px;
-}
-.quantity input{
-  width:50px;
-  padding:4px;
-  border-radius:6px;
-  border:none;
-  text-align:center;
-}
-
 /* ===== Actions ===== */
 .actions{
   display:flex;
@@ -141,7 +126,7 @@ header h1{
   position:fixed;
   top:70px;
   left:20px;
-  width:280px;
+  width:260px;
   background:#8c0000;
   padding:15px;
   border-radius:15px;
@@ -239,11 +224,8 @@ header h1{
     <img src="images/peanut-shell-2.jpg" onclick="changeImg(this,'m1')">
     <img src="images/peanut-shell-3.jpg" onclick="changeImg(this,'m1')">
   </div>
-  <div class="quantity">
-    <label>الكمية: <input type="number" id="q1" min="1" value="1"></label>
-  </div>
   <div class="actions">
-    <a onclick="add('فول سوداني بقشره',1,'السعر عند الطلب')">➕ سلة</a>
+    <a onclick="add('فول سوداني بقشره')">➕ سلة</a>
     <a href="https://wa.me/201126773698" target="_blank">واتساب</a>
     <a onclick="openAbout()">من نحن</a>
   </div>
@@ -257,11 +239,8 @@ header h1{
     <img src="images/peanut-shelled-2.jpg" onclick="changeImg(this,'m2')">
     <img src="images/peanut-shelled-3.jpg" onclick="changeImg(this,'m2')">
   </div>
-  <div class="quantity">
-    <label>الكمية: <input type="number" id="q2" min="1" value="1"></label>
-  </div>
   <div class="actions">
-    <a onclick="add('فول سوداني مقشر',2,'السعر عند الطلب')">➕ سلة</a>
+    <a onclick="add('فول سوداني مقشر')">➕ سلة</a>
     <a href="mailto:tarhbladna@gmail.com">إيميل</a>
     <a onclick="openAbout()">من نحن</a>
   </div>
@@ -275,11 +254,8 @@ header h1{
     <img src="images/peanut-crushed-2.jpg" onclick="changeImg(this,'m3')">
     <img src="images/peanut-crushed-3.jpg" onclick="changeImg(this,'m3')">
   </div>
-  <div class="quantity">
-    <label>الكمية: <input type="number" id="q3" min="1" value="1"></label>
-  </div>
   <div class="actions">
-    <a onclick="add('فول سوداني مجروش',3,'السعر عند الطلب')">➕ سلة</a>
+    <a onclick="add('فول سوداني مجروش')">➕ سلة</a>
     <a href="https://wa.me/201126773698" target="_blank">واتساب</a>
     <a onclick="openAbout()">من نحن</a>
   </div>
@@ -293,11 +269,8 @@ header h1{
     <img src="images/peanut-halawani-2.jpg" onclick="changeImg(this,'m4')">
     <img src="images/peanut-halawani-3.jpg" onclick="changeImg(this,'m4')">
   </div>
-  <div class="quantity">
-    <label>الكمية: <input type="number" id="q4" min="1" value="1"></label>
-  </div>
   <div class="actions">
-    <a onclick="add('فول سوداني حلواني',4,'السعر عند الطلب')">➕ سلة</a>
+    <a onclick="add('فول سوداني حلواني')">➕ سلة</a>
     <a href="mailto:tarhbladna@gmail.com">إيميل</a>
     <a onclick="openAbout()">من نحن</a>
   </div>
@@ -339,9 +312,8 @@ header h1{
 <script>
 let cart=[];
 
-function add(name,id,price){
-  let qty = document.getElementById('q'+id).value;
-  cart.push(`${name} | الكمية: ${qty} | ${price}`);
+function add(item){
+  cart.push(item);
   renderCart();
 }
 
