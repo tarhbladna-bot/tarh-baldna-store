@@ -1,1 +1,44 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تصدير الطلبات</title>
+<style>
+body{font-family:Cairo,Tahoma;background:#b30000;color:#fff;margin:0;padding:20px;}
+h1{text-align:center;color:#fff;}
+table{width:100%;border-collapse:collapse;margin-top:20px;}
+th,td{border:1px solid #fff;padding:8px;text-align:center;}
+th{background:#8c0000;}
+</style>
+</head>
+<body>
+
+<h1>تصدير الطلبات</h1>
+
+<table id="ordersTable">
+<tr>
+<th>المنتج</th>
+<th>الكمية</th>
+<th>السعر</th>
+</tr>
+</table>
+
+<script>
+let orders = JSON.parse(localStorage.getItem('cartData') || '[]');
+let table = document.getElementById('ordersTable');
+orders.forEach(item=>{
+  let tr = document.createElement('tr');
+  let parts = item.split('|').map(p=>p.trim());
+  parts.forEach(p=>{
+    let td = document.createElement('td');
+    td.textContent = p;
+    tr.appendChild(td);
+  });
+  table.appendChild(tr);
+});
+</script>
+
+</body>
+</html>
