@@ -13,65 +13,28 @@ body{
 
 /* ===== Header ===== */
 header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 25px;
-  background:#b30000;
-  position:sticky;
-  top:0;
-  z-index:1000;
+  text-align:center;
+  padding:20px;
 }
-header h1{
-  margin:0;
-  font-size:24px;
-  font-weight:bold;
-}
-.header-icons{
-  display:flex;
-  gap:15px;
-}
-.header-icons a{
-  text-decoration:none;
-  color:#fff;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  font-size:12px;
-}
-.icon-circle{
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  background:#fff;
-  color:#b30000;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:20px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.3);
-  transition:0.3s;
-}
-.icon-circle:hover{
-  transform:scale(1.15);
-}
+header h1{margin:0}
+header h2{margin:6px 0 0;font-weight:normal}
 
 /* ===== Products ===== */
 .products{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:20px;
-  padding:20px;
+  padding:20px
 }
 .card{
   background:#8c0000;
   padding:12px;
-  border-radius:14px;
+  border-radius:14px
 }
 .card img.main{
   width:100%;
   border-radius:12px;
-  cursor:pointer;
+  cursor:pointer
 }
 
 /* ===== Thumbnails ===== */
@@ -79,7 +42,7 @@ header h1{
   display:flex;
   gap:6px;
   justify-content:center;
-  margin-top:8px;
+  margin-top:8px
 }
 .thumbs img{
   width:60px;
@@ -88,18 +51,18 @@ header h1{
   border-radius:8px;
   cursor:pointer;
   transition:.25s;
-  border:2px solid transparent;
 }
+.thumbs img:hover,
 .thumbs img.active{
-  border:2px solid #fff;
   transform:scale(1.1);
+  box-shadow:0 0 0 2px #fff;
 }
 
 /* ===== Actions ===== */
 .actions{
   display:flex;
   justify-content:space-between;
-  margin-top:10px;
+  margin-top:10px
 }
 .actions a{
   color:#fff;
@@ -119,7 +82,7 @@ header h1{
   border-radius:30px;
   cursor:pointer;
   font-weight:bold;
-  z-index:1000;
+  z-index:1000
 }
 .cart{
   display:none;
@@ -130,7 +93,7 @@ header h1{
   background:#8c0000;
   padding:15px;
   border-radius:15px;
-  z-index:1000;
+  z-index:1000
 }
 .cart h3{margin-top:0}
 .cart ul{padding:0;list-style:none}
@@ -187,29 +150,8 @@ header h1{
 <body>
 
 <header>
-<h1>طرح بلدنا 1</h1>
-<div class="header-icons">
-<a href="javascript:void(0)" onclick="toggleCart()">
-<div class="icon-circle">🛒</div>
-<div>السلة</div>
-</a>
-<a href="#products">
-<div class="icon-circle">📦</div>
-<div>المنتجات</div>
-</a>
-<a href="javascript:void(0)" onclick="openAbout()">
-<div class="icon-circle">ℹ</div>
-<div>من نحن</div>
-</a>
-<a href="mailto:tarhbladna@gmail.com">
-<div class="icon-circle">✉</div>
-<div>الإيميل</div>
-</a>
-<a href="https://wa.me/201126773698" target="_blank">
-<div class="icon-circle">💬</div>
-<div>واتساب</div>
-</a>
-</div>
+  <h1>طرح بلدنا 1</h1>
+  <h2>طرح بلدنا</h2>
 </header>
 
 <div class="cart-btn" onclick="toggleCart()">🛒 السلة</div>
@@ -355,7 +297,8 @@ function closeAbout(){
 
 function changeImg(el,id){
   document.getElementById(id).src=el.src;
-  el.parentElement.querySelectorAll('img').forEach(i=>i.classList.remove('active'));
+  el.parentElement.querySelectorAll('img')
+    .forEach(i=>i.classList.remove('active'));
   el.classList.add('active');
 }
 
