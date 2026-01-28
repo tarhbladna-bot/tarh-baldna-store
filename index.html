@@ -1,4 +1,4 @@
-cat<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
@@ -78,6 +78,7 @@ header h1{
   width:100%;
   overflow:hidden;
   margin:0 auto;
+  border-radius:0;
 }
 .banner-slider{
   display:flex;
@@ -297,14 +298,56 @@ header h1{
     <img src="attachments/HPo3KopNzB3kxmYUhoyy4.jpeg" alt="بانر 2">
   </div>
 </section>
+<div class="products" id="products">
 
-<div class="cart-toggle" onclick="toggleCart()">🛒 السلة</div>
+  <!-- فول سوداني بقشره -->
+  <div class="product">
+    <img class="main-img" src="images/peanut-shell-1.jpg" onclick="openLightbox(this)">
+    <h2>فول سوداني بقشره</h2>
+    <p>السعر عند الطلب</p>
+    <button onclick="add('فول سوداني بقشره')">أضف للسلة</button>
+    <div class="product-gallery">
+      <img src="images/peanut-shell-2.jpg" class="selected" onclick="changeMainImage(this)">
+      <img src="images/peanut-shell-3.jpg" onclick="changeMainImage(this)">
+    </div>
+  </div>
 
-<div class="cart" id="cart">
-  <h3>سلة الطلب</h3>
-  <ul id="items"></ul>
-  <button onclick="send()">اطلب واتساب</button>
-  <button onclick="clearCart()">تفريغ السلة</button>
+  <!-- فول سوداني مقشر -->
+  <div class="product">
+    <img class="main-img" src="images/peanut-shelled-1.jpg" onclick="openLightbox(this)">
+    <h2>فول سوداني مقشر</h2>
+    <p>السعر عند الطلب</p>
+    <button onclick="add('فول سوداني مقشر')">أضف للسلة</button>
+    <div class="product-gallery">
+      <img src="images/peanut-shelled-2.jpg" class="selected" onclick="changeMainImage(this)">
+      <img src="images/peanut-shelled-3.jpg" onclick="changeMainImage(this)">
+    </div>
+  </div>
+
+  <!-- فول سوداني مجروش -->
+  <div class="product">
+    <img class="main-img" src="images/peanut-crushed-1.jpg" onclick="openLightbox(this)">
+    <h2>فول سوداني مجروش</h2>
+    <p>السعر عند الطلب</p>
+    <button onclick="add('فول سوداني مجروش')">أضف للسلة</button>
+    <div class="product-gallery">
+      <img src="images/peanut-crushed-2.jpg" class="selected" onclick="changeMainImage(this)">
+      <img src="images/peanut-crushed-3.jpg" onclick="changeMainImage(this)">
+    </div>
+  </div>
+
+  <!-- فول سوداني حلواني -->
+  <div class="product">
+    <img class="main-img" src="images/peanut-halawani-1.jpg" onclick="openLightbox(this)">
+    <h2>فول سوداني حلواني</h2>
+    <p>السعر عند الطلب</p>
+    <button onclick="add('فول سوداني حلواني')">أضف للسلة</button>
+    <div class="product-gallery">
+      <img src="images/peanut-halawani-2.jpg" class="selected" onclick="changeMainImage(this)">
+      <img src="images/peanut-halawani-3.jpg" onclick="changeMainImage(this)">
+    </div>
+  </div>
+
 </div>
 
 <a class="whatsapp" href="https://wa.me/201126773698" target="_blank">💬</a>
@@ -389,13 +432,7 @@ function exportCart(){
   if(cart.length===0){alert('السلة فارغة');return;}
   alert(cart.join('\n'));
 }
-
-function openAbout(){
-  alert("شركة طرح بلدنا\nخبرة وجودة في بيع الفول السوداني بأنواعه\nللتواصل: 01020508423 / 01126773698");
-}
 </script>
 
 </body>
 </html>
-
-
