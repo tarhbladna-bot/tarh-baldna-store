@@ -1,122 +1,98 @@
+صح كلامك 👍 الكود اللي كتبتلك إياه كان نسخة مبسطة، لكن اللي بعتّهولي من الموقع الأصلي طويل جدًا لأنه معمول بـ WordPress + Elementor + Astra، وده بيضيف آلاف الأسطر من الـ HTML والـ CSS والـ JavaScript.
+لو عايز نسخة كاملة زي اللي عندك بالضبط (هيدر، ألوان، منتجات، ستايل)، عندنا حلين:
+1. استخراج الكود الأصلي
+- الكود اللي بعتّهولي هو جزء من ملف index.html داخل القالب.
+- عشان تاخد نسخة كاملة، محتاج تنسخ كل محتويات الملف (مش بس من السطر 471).
+- كمان لازم تاخد ملفات الـ CSS والـ JS اللي بتتحكم في الألوان والحركات.
+2. بناء نسخة مخصصة (HTML + CSS)
+أنا أقدر أكتبلك صفحة كاملة فيها:
+- الهيدر بنفس القائمة واللوجو.
+- الألوان مأخوذة من Astra (غالبًا الأبيض، الرمادي الفاتح، والأزرار بالبرتقالي/الأخضر).
+- قسم المنتجات يتعرض في شبكة (Grid) مع صور وأزرار شراء.
+- الفوتر لو محتاجه.
+مثال موسع (أقرب لشكل الموقع الأصلي):
 <!DOCTYPE html>
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>منتجاتنا - tahbladna</title>
+  <title>tahbladna</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      direction: rtl;
-      background: #fff;
-    }
-    header {
-      background: #fff;
-      border-bottom: 1px solid #ddd;
-    }
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-    }
-    nav li {
-      margin: 0;
-    }
-    nav a {
-      display: block;
-      padding: 10px 15px;
-      text-decoration: none;
-      color: inherit;
-    }
-    nav a:hover {
-      background: #f0f0f0;
-    }
-
-    /* المنتجات */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .product {
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      padding: 15px;
-      text-align: center;
-      background: #fafafa;
-    }
-    .product img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 4px;
-    }
-    .product h2 {
-      font-size: 18px;
-      margin: 10px 0;
-    }
-    .product p {
-      font-size: 14px;
-      color: #555;
-    }
-    .product a {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 15px;
-      background: #eee;
-      text-decoration: none;
-      border-radius: 4px;
-    }
-    .product a:hover {
-      background: #ddd;
-    }
+    body { font-family: Tahoma, sans-serif; margin:0; background:#fff; }
+    header { background:#fff; border-bottom:1px solid #ddd; display:flex; justify-content:space-between; align-items:center; padding:10px 20px; }
+    header img { height:60px; }
+    nav ul { list-style:none; margin:0; padding:0; display:flex; }
+    nav ul li { margin:0 10px; }
+    nav ul li a { text-decoration:none; color:#333; font-weight:bold; }
+    .hero { text-align:center; padding:60px; background:#f9f9f9; }
+    .hero h1 { font-size:36px; color:#222; margin-bottom:10px; }
+    .hero p { font-size:20px; color:#555; }
+    .hero a { display:inline-block; margin-top:20px; padding:12px 25px; background:#d35400; color:#fff; text-decoration:none; border-radius:5px; }
+    .products { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:40px; }
+    .product { border:1px solid #ddd; padding:15px; text-align:center; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+    .product img { width:100%; height:auto; }
+    .product h3 { margin:10px 0; color:#333; }
+    .product p { color:#555; }
+    .product a { display:inline-block; margin-top:10px; padding:8px 15px; background:#27ae60; color:#fff; text-decoration:none; border-radius:4px; }
+    footer { background:#333; color:#fff; text-align:center; padding:20px; margin-top:40px; }
   </style>
 </head>
 <body>
   <header>
+    <div class="logo">
+      <img src="product4-1.jpg" alt="tahbladna">
+      <span>tahbladna</span>
+    </div>
     <nav>
       <ul>
-        <li><a href="https://a5w349k35x.trywebops.co/">الرئيسية</a></li>
-        <li><a href="https://a5w349k35x.trywebops.co/about/">معلومات عنا</a></li>
-        <li><a href="https://a5w349k35x.trywebops.co/services/">الخدمات</a></li>
-        <li><a href="https://a5w349k35x.trywebops.co/shop/">Shop</a></li>
-        <li><a href="https://a5w349k35x.trywebops.co/blog/">مدونة</a></li>
-        <li><a href="https://a5w349k35x.trywebops.co/contact/">اتصل</a></li>
+        <li><a href="#">الرئيسية</a></li>
+        <li><a href="#">معلومات عنا</a></li>
+        <li><a href="#">الخدمات</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">مدونة</a></li>
+        <li><a href="#">اتصل</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <h1 style="text-align:center; padding:20px;">منتجاتنا</h1>
-    <div class="products">
-      <div class="product">
-        <img src="https://a5w349k35x.trywebops.co/wp-content/uploads/2026/02/product1.jpg" alt="منتج 1">
-        <h2>فول سوداني محمص</h2>
-        <p>أفضل جودة للفول السوداني المحمص الطازج.</p>
-        <a href="https://a5w349k35x.trywebops.co/shop/">اطلب الآن</a>
-      </div>
-      <div class="product">
-        <img src="https://a5w349k35x.trywebops.co/wp-content/uploads/2026/02/product2.jpg" alt="منتج 2">
-        <h2>زبدة الفول السوداني</h2>
-        <p>زبدة طبيعية 100% بدون إضافات صناعية.</p>
-        <a href="https://a5w349k35x.trywebops.co/shop/">اطلب الآن</a>
-      </div>
-      <div class="product">
-        <img src="https://a5w349k35x.trywebops.co/wp-content/uploads/2026/02/product3.jpg" alt="منتج 3">
-        <h2>فول سوداني مملح</h2>
-        <p>طعم رائع مع الملح الطبيعي.</p>
-        <a href="https://a5w349k35x.trywebops.co/shop/">اطلب الآن</a>
-      </div>
-      <div class="product">
-        <img src="https://a5w349k35x.trywebops.co/wp-content/uploads/2026/02/product4-1.jpg" alt="منتج 4">
-        <h2>فول سوداني خام</h2>
-        <p>حبوب فول سوداني خام عالية الجودة.</p>
-        <a href="https://a5w349k35x.trywebops.co/shop/">اطلب الآن</a>
-      </div>
+  <section class="hero">
+    <p>أفضل جودة لأصناف الفول السوداني</p>
+    <h1>تجارة الفول السوداني بجودة عالية</h1>
+    <a href="#">اطلب الآن</a>
+  </section>
+
+  <section class="products">
+    <div class="product">
+      <img src="product1.jpg" alt="منتج 1">
+      <h3>فول سوداني محمص</h3>
+      <p>جودة ممتازة وطعم رائع</p>
+      <a href="#">اشتري الآن</a>
     </div>
-  </main>
+    <div class="product">
+      <img src="product2.jpg" alt="منتج 2">
+      <h3>زبدة فول سوداني</h3>
+      <p>طبيعية 100% بدون إضافات</p>
+      <a href="#">اشتري الآن</a>
+    </div>
+    <div class="product">
+      <img src="product3.jpg" alt="منتج 3">
+      <h3>فول سوداني مملح</h3>
+      <p>مناسب للوجبات الخفيفة</p>
+      <a href="#">اشتري الآن</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 tahbladna - جميع الحقوق محفوظة</p>
+  </footer>
 </body>
 </html>
+
+
+
+ده كود كامل فيه:
+- هيدر + قائمة.
+- قسم ترحيب.
+- منتجات (3 أمثلة).
+- فوتر.
+لو عايز أزوّدلك كل المنتجات اللي عندك في الموقع الأصلي، محتاج تبعتلي أسماء المنتجات وصورهم (أو روابط الصور) عشان أضيفهم في الكود.
+تحب أبدأ أستخرجلك المنتجات من الكود الأصلي اللي عندك وأحوّلها لنسخة HTML ثابتة؟
