@@ -3,186 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شركة طرح بلدنا لتجارة المحاصيل الزراعية والفول السودانى</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>طرح بلدنا - Tarh Bladna</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #2d5a27; /* أخضر زراعي */
-            --secondary: #d4a373; /* لون الفول السوداني */
-            --light: #fefae0;
-            --dark: #1f2f16;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-
-        body { background-color: #fff; color: var(--dark); line-height: 1.6; }
+        :root { --main: #2d5a27; --accent: #d4a373; --bg: #f9fbf9; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        body { background: var(--bg); color: #333; }
 
         /* الهيدر */
-        header {
-            background: var(--primary);
-            color: white;
-            padding: 20px 5%;
-            text-align: center;
-            border-bottom: 5px solid var(--secondary);
-        }
+        header { background: #fff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top:0; z-index:100; }
+        .logo h1 { color: var(--main); font-size: 1.4rem; }
+        .contact-top { font-weight: bold; color: var(--main); }
 
-        header h1 { font-size: 1.8rem; margin-bottom: 5px; }
-        header p { font-size: 1.1rem; opacity: 0.9; font-weight: 300; }
+        /* القسم الرئيسي */
+        .hero { background: var(--main); color: white; text-align: center; padding: 40px 20px; }
+        .hero h2 { margin-bottom: 10px; }
 
-        /* قسم الترحيب */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
+        /* شبكة المنتجات */
+        .container { padding: 40px 5%; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
 
-        .hero h2 { font-size: 2.5rem; margin-bottom: 10px; }
-        .hero .badge { background: var(--secondary); padding: 5px 15px; border-radius: 20px; font-weight: bold; }
+        /* كارت المنتج الكبير */
+        .product-card { background: #fff; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .product-title { color: var(--main); margin-bottom: 15px; border-right: 4px solid var(--accent); padding-right: 10px; }
 
-        /* قسم المنتجات */
-        .container { padding: 50px 8%; }
-        .section-title { text-align: center; margin-bottom: 40px; color: var(--primary); position: relative; }
-        .section-title::after { content: ''; width: 80px; height: 3px; background: var(--secondary); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); }
+        /* نظام الصور (1 كبيرة + 3 صغيرة) */
+        .gallery { display: flex; flex-direction: column; gap: 10px; }
+        .main-img { width: 100%; height: 250px; border-radius: 10px; object-fit: cover; background: #eee; border: 1px solid #ddd; }
+        .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .thumb-img { width: 100%; height: 80px; border-radius: 8px; object-fit: cover; background: #eee; border: 1px solid #ddd; cursor: pointer; transition: 0.3s; }
+        .thumb-img:hover { border-color: var(--accent); opacity: 0.8; }
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
+        .product-desc { margin-top: 15px; font-size: 0.95rem; color: #666; line-height: 1.6; }
 
-        .product-card {
-            background: var(--light);
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            border: 1px solid #e9edc9;
-            transition: 0.3s;
-        }
-
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-color: var(--secondary); }
-
-        .product-card i { font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px; }
-        .product-card h3 { color: var(--primary); margin-bottom: 10px; }
-        .product-card p { font-size: 0.95rem; color: #555; }
-
-        /* قسم التواصل */
-        .contact-box {
-            background: var(--dark);
-            color: white;
-            padding: 40px;
-            border-radius: 20px;
-            margin-top: 50px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        .contact-info div { margin: 15px; font-size: 1.1rem; }
-        .contact-info i { color: var(--secondary); margin-left: 10px; font-size: 1.3rem; }
-
-        .whatsapp-btn {
-            background: #25d366;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            transition: 0.3s;
-        }
-
-        .whatsapp-btn:hover { background: #128c7e; transform: scale(1.05); }
-
-        /* العنوان */
-        .location { text-align: center; margin-top: 30px; color: #666; }
-
-        footer { background: #eee; text-align: center; padding: 20px; margin-top: 50px; font-size: 0.9rem; }
-
-        @media (max-width: 768px) {
-            .hero h2 { font-size: 1.8rem; }
-            .contact-box { flex-direction: column; text-align: center; }
-        }
+        /* الفوتر والتواصل */
+        footer { background: #1a2e18; color: white; padding: 40px 5%; margin-top: 50px; text-align: center; }
+        .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; }
+        
+        @media (max-width: 600px) { .product-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>شركة طرح بلدنا Tarh bladna</h1>
-        <p>لتجارة المحاصيل الزراعية والفول السودانى</p>
+        <div class="logo">
+            <h1>طرح بلدنا - Tarh Bladna</h1>
+            <small>لتجارة المحاصيل الزراعية والفول السوداني</small>
+        </div>
+        <div class="contact-top">01126773698</div>
     </header>
 
     <section class="hero">
-        <span class="badge">محلي وتصدير</span>
-        <h2>جودة الأرض المصرية بين يديك</h2>
-        <p>متخصصون في أجود أنواع الفول السوداني بمختلف أشكاله</p>
+        <h2>منتجاتنا من الفول السوداني</h2>
+        <p>جودة مصرية متميزة للمحلي والتصدير - أبو رواش، الجيزة</p>
     </section>
 
     <div class="container">
-        <h2 class="section-title">منتجاتنا</h2>
-        
-        <div class="products-grid">
-            <div class="product-card">
-                <i class="fas fa-seedling"></i>
-                <h3>فول سودانى بقشره</h3>
-                <p>متوفر (نى ومحمص) بأعلى معايير الجودة.</p>
-            </div>
+        <div class="product-grid">
 
             <div class="product-card">
-                <i class="fas fa-leaf"></i>
-                <h3>فول سودانى مقشر</h3>
-                <p>حبات منتقاة بعناية (نى ومحمص) مناسبة للتعبئة.</p>
-            </div>
-
-            <div class="product-card">
-                <i class="fas fa-cookie"></i>
-                <h3>فول سودانى حلوانى</h3>
-                <p>مخصص لمصانع الحلويات والمخابز (نى ومحمص).</p>
+                <h3 class="product-title">فول سوداني بقشره (نى ومحمص)</h3>
+                <div class="gallery">
+                    <img src="p1_main.jpg" class="main-img" alt="صورة رئيسية">
+                    <div class="thumbs">
+                        <img src="p1_1.jpg" class="thumb-img">
+                        <img src="p1_2.jpg" class="thumb-img">
+                        <img src="p1_3.jpg" class="thumb-img">
+                    </div>
+                </div>
+                <p class="product-desc">أجود أنواع الفول السوداني بالقشر، منتقى بعناية لضمان الامتلاء والطعم الأصلي.</p>
             </div>
 
             <div class="product-card">
-                <i class="fas fa-mortar-pestle"></i>
-                <h3>فول سودانى مجروش</h3>
-                <p>مجروش بجودة عالية (نى ومحمص) للاستخدامات المختلفة.</p>
+                <h3 class="product-title">فول سوداني مقشر (نى ومحمص)</h3>
+                <div class="gallery">
+                    <img src="p2_main.jpg" class="main-img" alt="صورة رئيسية">
+                    <div class="thumbs">
+                        <img src="p2_1.jpg" class="thumb-img">
+                        <img src="p2_2.jpg" class="thumb-img">
+                        <img src="p2_3.jpg" class="thumb-img">
+                    </div>
+                </div>
+                <p class="product-desc">حبات مقشرة وجاهزة، نخب أول، مناسبة جداً لعمليات التصدير والتعبئة الفاخرة.</p>
             </div>
 
             <div class="product-card">
-                <i class="fas fa-ice-cream"></i>
-                <h3>للطعوم والشيكولاته</h3>
-                <p>درجات مخصصة لمصانع الأغذية والشيكولاته والآيس كريم.</p>
+                <h3 class="product-title">فول سوداني حلواني</h3>
+                <div class="gallery">
+                    <img src="p3_main.jpg" class="main-img" alt="صورة رئيسية">
+                    <div class="thumbs">
+                        <img src="p3_1.jpg" class="thumb-img">
+                        <img src="p3_2.jpg" class="thumb-img">
+                        <img src="p3_3.jpg" class="thumb-img">
+                    </div>
+                </div>
+                <p class="product-desc">مخصص لمصانع وورش الحلويات، يتميز بنسبة زيوت متوازنة وطعم غني.</p>
             </div>
-        </div>
 
-        <div class="contact-box" id="contact">
-            <div class="contact-info">
-                <h3>تواصل معنا الآن:</h3>
-                <div><i class="fas fa-phone"></i> 01126773698 / 01020508423</div>
-                <div><i class="fas fa-map-marker-alt"></i> ابورواش - الجيزة - مصر</div>
+            <div class="product-card">
+                <h3 class="product-title">فول سوداني مجروش</h3>
+                <div class="gallery">
+                    <img src="p4_main.jpg" class="main-img" alt="صورة رئيسية">
+                    <div class="thumbs">
+                        <img src="p4_1.jpg" class="thumb-img">
+                        <img src="p4_2.jpg" class="thumb-img">
+                        <img src="p4_3.jpg" class="thumb-img">
+                    </div>
+                </div>
+                <p class="product-desc">مجروش ناعم أو خشن حسب الطلب، يستخدم في التزيين والصناعات الغذائية.</p>
             </div>
-            
-            <a href="https://wa.me/201126773698" class="whatsapp-btn">
-                <i class="fab fa-whatsapp" style="font-size: 1.5rem; margin-left: 10px;"></i>
-                اطلب عبر الواتساب
-            </a>
-        </div>
 
-        <div class="location">
-            <p><strong>البيع محلي وتصدير لجميع دول العالم</strong></p>
         </div>
     </div>
 
     <footer>
-        <p>جميع الحقوق محفوظة لشركة طرح بلدنا &copy; 2026</p>
+        <p>طرح بلدنا - Tarh Bladna</p>
+        <p>المقر: ابورواش - الجيزة - مصر</p>
+        <p>التواصل: 01126773698 / 01020508423</p>
+        <p style="margin-top:20px; opacity:0.7">جميع الحقوق محفوظة &copy; 2026</p>
     </footer>
+
+    <a href="https://wa.me/201126773698" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
 </body>
 </html>
