@@ -3,184 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>طرح بلدنا - Tarh Bladna | لجميع أنواع الفول السوداني</title>
+    <title>طرح بلدنا | Tarh Bladna - للفول السوداني الفاخر</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        :root { --main: #2d5a27; --accent: #d4a373; --bg: #fdfaf5; --white: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
-        body { background: var(--bg); color: #333; line-height: 1.6; }
+        :root {
+            --primary: #2d5a27;
+            --accent: #d4a373;
+            --dark: #1a2e18;
+            --light: #fdfaf5;
+            --white: #ffffff;
+        }
 
-        /* الهيدر */
-        header { background: var(--white); padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top:0; z-index:1000; }
-        .logo h1 { color: var(--main); font-size: 1.5rem; }
-        .contact-header { text-align: left; font-weight: bold; color: var(--main); font-size: 0.9rem; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        
+        body { background: var(--light); color: #333; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* البانر */
-        .main-banner {
-            width: 100%; height: 400px;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('banner.jpg');
-            background-size: cover; background-position: center;
+        /* الهيدر الزجاجي */
+        header { 
+            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px);
+            padding: 10px 5%; display: flex; justify-content: space-between; 
+            align-items: center; box-shadow: 0 2px 20px rgba(0,0,0,0.05); 
+            position: sticky; top: 0; z-index: 1000; 
+        }
+
+        .logo h1 { color: var(--primary); font-size: 1.6rem; font-weight: 700; }
+        .logo span { color: var(--accent); font-size: 0.8rem; letter-spacing: 2px; }
+
+        /* أيقونة السلة */
+        .cart-trigger { 
+            position: relative; background: var(--primary); color: white; 
+            width: 45px; height: 45px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+        }
+        .cart-badge { 
+            position: absolute; top: -5px; right: -5px; background: #e74c3c; 
+            color: white; font-size: 0.7rem; width: 20px; height: 20px; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        }
+
+        /* البانر المتحرك */
+        .hero {
+            height: 500px; background: linear-gradient(rgba(26, 46, 24, 0.6), rgba(26, 46, 24, 0.6)), url('banner.jpg');
+            background-size: cover; background-position: center; background-attachment: fixed;
             display: flex; align-items: center; justify-content: center; color: white; text-align: center;
         }
-        .banner-text h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .hero-content h2 { font-size: 3.5rem; margin-bottom: 10px; animation: fadeInUp 1s; }
 
-        /* الأيقونات الأربعة */
-        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; padding: 40px 5%; background: var(--white); border-bottom: 4px solid var(--accent); }
-        .feature-item { text-align: center; cursor: pointer; transition: 0.3s; padding: 20px; border-radius: 10px; }
-        .feature-item:hover { background: #f0f4f0; transform: translateY(-5px); }
-        .feature-item i { font-size: 2.5rem; color: var(--accent); margin-bottom: 10px; }
-        .feature-item h4 { color: var(--main); }
+        /* المميزات */
+        .features { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 20px; padding: 60px 5%; background: white; margin-top: -50px;
+            border-radius: 20px 20px 0 0; box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
+        }
+        .f-box { 
+            padding: 30px; border-radius: 15px; border: 1px solid #eee; transition: 0.4s; cursor: pointer; text-align: center;
+        }
+        .f-box:hover { background: var(--primary); color: white; transform: translateY(-10px); }
+        .f-box i { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
 
         /* المنتجات */
-        .container { padding: 50px 5%; }
-        .section-title { text-align: center; margin-bottom: 50px; font-size: 2rem; color: var(--main); }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
+        .product-section { padding: 80px 5%; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
         
-        .product-card { background: var(--white); border-radius: 15px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .product-card h3 { color: var(--main); margin-bottom: 15px; font-size: 1.2rem; border-right: 4px solid var(--accent); padding-right: 10px; }
-        
-        /* نظام الـ 4 صور */
-        .gallery { display: flex; flex-direction: column; gap: 8px; }
-        .main-img { width: 100%; height: 220px; border-radius: 10px; object-fit: cover; background: #eee; border: 1px solid #ddd; }
-        .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-        .thumb-img { width: 100%; height: 75px; border-radius: 5px; object-fit: cover; background: #eee; border: 1px solid #ddd; }
+        .p-card { 
+            background: white; border-radius: 20px; overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #f0f0f0;
+        }
+        .main-img-wrap { width: 100%; height: 250px; overflow: hidden; }
+        .main-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .p-card:hover .main-img-wrap img { transform: scale(1.1); }
 
-        .desc { margin-top: 15px; font-size: 0.95rem; color: #555; }
+        .thumb-bar { display: flex; gap: 5px; padding: 10px; background: #fafafa; }
+        .thumb-bar img { width: 60px; height: 50px; object-fit: cover; border-radius: 5px; cursor: pointer; opacity: 0.6; transition: 0.3s; }
+        .thumb-bar img:hover { opacity: 1; border: 2px solid var(--accent); }
 
-        /* النافذة المنبثقة */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); align-items: center; justify-content: center; }
-        .modal-content { background: white; padding: 30px; border-radius: 15px; width: 90%; max-width: 500px; text-align: center; position: relative; }
-        .close-btn { position: absolute; left: 20px; top: 10px; font-size: 25px; cursor: pointer; }
+        .p-info { padding: 25px; }
+        .btn-add { 
+            width: 100%; padding: 12px; background: var(--primary); color: white; 
+            border: none; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s;
+        }
+        .btn-add:hover { background: var(--accent); }
 
-        /* الفوتر والواتساب */
-        footer { background: #1a2e18; color: white; padding: 40px 5%; text-align: center; }
-        .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        /* الفوتر والسوشيال */
+        footer { background: var(--dark); color: white; padding: 60px 5% 20px; }
+        .social-icons a { 
+            display: inline-flex; width: 50px; height: 50px; background: rgba(255,255,255,0.1); 
+            border-radius: 50%; align-items: center; justify-content: center; color: white; 
+            text-decoration: none; margin: 0 10px; transition: 0.3s; font-size: 1.5rem;
+        }
+        .social-icons a:hover { background: var(--accent); transform: rotate(360deg); }
+
+        /* انيميشن */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* السلة المنبثقة */
+        #cartSidebar {
+            position: fixed; left: -100%; top: 0; width: 350px; height: 100%; 
+            background: white; z-index: 2000; transition: 0.5s; box-shadow: 5px 0 30px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        #cartSidebar.active { left: 0; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo"><h1>طرح بلدنا - Tarh Bladna</h1></div>
-        <div class="contact-header">01126773698 <br> 01020508423</div>
+        <div class="logo">
+            <h1>طرح بلدنا</h1>
+            <span>TARH BLADNA</span>
+        </div>
+        <div class="cart-trigger" onclick="toggleCart()">
+            <i class="fas fa-shopping-cart"></i>
+            <div class="cart-badge" id="cCount">0</div>
+        </div>
     </header>
 
-    <div class="main-banner">
-        <div class="banner-text">
-            <h2>فول سوداني فاخر - محلي وتصدير</h2>
-            <p>الجودة والأمانة في قلب الجيزة - ابورواش</p>
+    <div id="cartSidebar">
+        <h2 style="margin-bottom: 20px; color: var(--primary)">سلة طلباتك</h2>
+        <div id="cartItems" style="max-height: 70vh; overflow-y: auto;"></div>
+        <button onclick="sendOrder()" class="btn-add" style="background: #25d366; margin-top: 20px;">
+            <i class="fab fa-whatsapp"></i> إرسال الطلب الآن
+        </button>
+        <p onclick="toggleCart()" style="text-align: center; cursor: pointer; margin-top: 15px; color: red;">إغلاق</p>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>طرح بلدنا</h2>
+            <p>أجود أنواع الفول السوداني المصري للتصدير والمحلي</p>
         </div>
-    </div>
+    </section>
 
-    <div class="features">
-        <div class="feature-item" onclick="openModal('exp')"><i class="fas fa-history"></i><h4>خبرة طويلة</h4></div>
-        <div class="feature-item" onclick="openModal('quality')"><i class="fas fa-award"></i><h4>جودة مضمونة</h4></div>
-        <div class="feature-item" onclick="openModal('price')"><i class="fas fa-tags"></i><h4>أسعار تنافسية</h4></div>
-        <div class="feature-item" onclick="openModal('delivery')"><i class="fas fa-shuttle-van"></i><h4>سرعة التوريد</h4></div>
-    </div>
+    <section class="features">
+        <div class="f-box" onclick="alert('خبرتنا تزيد عن 20 عاماً في السوق')"><i class="fas fa-history"></i><h4>خبرة طويلة</h4></div>
+        <div class="f-box" onclick="alert('نضمن لك جودة مطابقة للمواصفات القياسية')"><i class="fas fa-award"></i><h4>جودة مضمونة</h4></div>
+        <div class="f-box" onclick="alert('أفضل سعر من المورد مباشرة')"><i class="fas fa-tags"></i><h4>أسعار تنافسية</h4></div>
+        <div class="f-box" onclick="alert('شحن وتوريد سريع لجميع أنحاء العالم')"><i class="fas fa-truck-fast"></i><h4>سرعة التوريد</h4></div>
+    </section>
 
-    <div class="container">
-        <h2 class="section-title">قائمة المنتجات</h2>
+    <section class="product-section">
+        <h2 style="text-align: center; margin-bottom: 50px; font-size: 2.5rem; color: var(--primary)">منتجاتنا المتميزة</h2>
+        
         <div class="product-grid">
-
-            <div class="product-card">
-                <h3>فول سودانى بقشره</h3>
-                <div class="gallery">
-                    <img src="p1_main.jpg" class="main-img">
-                    <div class="thumbs">
-                        <img src="p1_1.jpg" class="thumb-img">
-                        <img src="p1_2.jpg" class="thumb-img">
-                        <img src="p1_3.jpg" class="thumb-img">
-                    </div>
+            <div class="p-card">
+                <div class="main-img-wrap"><img src="p1_main.jpg" id="mainP1"></div>
+                <div class="thumb-bar">
+                    <img src="p1_1.jpg" onclick="document.getElementById('mainP1').src='p1_1.jpg'">
+                    <img src="p1_2.jpg" onclick="document.getElementById('mainP1').src='p1_2.jpg'">
+                    <img src="p1_3.jpg" onclick="document.getElementById('mainP1').src='p1_3.jpg'">
                 </div>
-                <p class="desc">متوفر نى ومحمص. حبة كبيرة وممتلئة، منتقاة يدوياً وآلياً.</p>
+                <div class="p-info">
+                    <h3>فول سوداني بقشره</h3>
+                    <p style="color: #777; font-size: 0.9rem; margin-bottom: 15px;">متوفر نى ومحمص بجودة تصدير فاخرة.</p>
+                    <button class="btn-add" onclick="addToCart('فول بقشره')">إضافة للسلة</button>
+                </div>
             </div>
 
-            <div class="product-card">
-                <h3>فول سودانى مقشر</h3>
-                <div class="gallery">
-                    <img src="p2_main.jpg" class="main-img">
-                    <div class="thumbs">
-                        <img src="p2_1.jpg" class="thumb-img">
-                        <img src="p2_2.jpg" class="thumb-img">
-                        <img src="p2_3.jpg" class="thumb-img">
-                    </div>
+            <div class="p-card">
+                <div class="main-img-wrap"><img src="p2_main.jpg" id="mainP2"></div>
+                <div class="thumb-bar">
+                    <img src="p2_1.jpg" onclick="document.getElementById('mainP2').src='p2_1.jpg'">
+                    <img src="p2_2.jpg" onclick="document.getElementById('mainP2').src='p2_2.jpg'">
+                    <img src="p2_3.jpg" onclick="document.getElementById('mainP2').src='p2_3.jpg'">
                 </div>
-                <p class="desc">متوفر نى ومحمص. مناسب جداً للتعبئة الفاخرة وعمليات التصدير.</p>
+                <div class="p-info">
+                    <h3>فول سوداني مقشر</h3>
+                    <p style="color: #777; font-size: 0.9rem; margin-bottom: 15px;">حبات منقاة ومجهزة آلياً لكافة الأغراض.</p>
+                    <button class="btn-add" onclick="addToCart('فول مقشر')">إضافة للسلة</button>
+                </div>
             </div>
 
-            <div class="product-card">
-                <h3>فول سودانى حلوانى</h3>
-                <div class="gallery">
-                    <img src="p3_main.jpg" class="main-img">
-                    <div class="thumbs">
-                        <img src="p3_1.jpg" class="thumb-img">
-                        <img src="p3_2.jpg" class="thumb-img">
-                        <img src="p3_3.jpg" class="thumb-img">
-                    </div>
+            <div class="p-card">
+                <div class="main-img-wrap"><img src="p3_main.jpg" id="mainP3"></div>
+                <div class="thumb-bar">
+                    <img src="p3_1.jpg" onclick="document.getElementById('mainP3').src='p3_1.jpg'">
+                    <img src="p3_2.jpg" onclick="document.getElementById('mainP3').src='p3_2.jpg'">
+                    <img src="p3_3.jpg" onclick="document.getElementById('mainP3').src='p3_3.jpg'">
                 </div>
-                <p class="desc">متوفر نى ومحمص. الحجم المثالي لصناعة أرقى أنواع الحلويات الشرقية والغربية.</p>
+                <div class="p-info">
+                    <h3>فول سوداني حلواني</h3>
+                    <button class="btn-add" onclick="addToCart('فول حلواني')">إضافة للسلة</button>
+                </div>
             </div>
 
-            <div class="product-card">
-                <h3>فول سودانى مجروش</h3>
-                <div class="gallery">
-                    <img src="p4_main.jpg" class="main-img">
-                    <div class="thumbs">
-                        <img src="p4_1.jpg" class="thumb-img">
-                        <img src="p4_2.jpg" class="thumb-img">
-                        <img src="p4_3.jpg" class="thumb-img">
-                    </div>
+            <div class="p-card">
+                <div class="main-img-wrap"><img src="p4_main.jpg" id="mainP4"></div>
+                <div class="thumb-bar">
+                    <img src="p4_1.jpg" onclick="document.getElementById('mainP4').src='p4_1.jpg'">
+                    <img src="p4_2.jpg" onclick="document.getElementById('mainP4').src='p4_2.jpg'">
+                    <img src="p4_3.jpg" onclick="document.getElementById('mainP4').src='p4_3.jpg'">
                 </div>
-                <p class="desc">متوفر نى ومحمص. مجروش نقي مخصص للمخابز ومصانع الآيس كريم.</p>
+                <div class="p-info">
+                    <h3>فول سوداني مجروش</h3>
+                    <button class="btn-add" onclick="addToCart('فول مجروش')">إضافة للسلة</button>
+                </div>
             </div>
 
-            <div class="product-card">
-                <h3>فول سودانى للطعوم والشيكولاته</h3>
-                <div class="gallery">
-                    <img src="p5_main.jpg" class="main-img">
-                    <div class="thumbs">
-                        <img src="p5_1.jpg" class="thumb-img">
-                        <img src="p5_2.jpg" class="thumb-img">
-                        <img src="p5_3.jpg" class="thumb-img">
-                    </div>
+            <div class="p-card">
+                <div class="main-img-wrap"><img src="p5_main.jpg" id="mainP5"></div>
+                <div class="thumb-bar">
+                    <img src="p5_1.jpg" onclick="document.getElementById('mainP5').src='p5_1.jpg'">
+                    <img src="p5_2.jpg" onclick="document.getElementById('mainP5').src='p5_2.jpg'">
+                    <img src="p5_3.jpg" onclick="document.getElementById('mainP5').src='p5_3.jpg'">
                 </div>
-                <p class="desc">خامات خاصة معالجة خصيصاً لمصانع الشيكولاته ومكسبات الطعم العالمية.</p>
+                <div class="p-info">
+                    <h3>فول سوداني للطعوم</h3>
+                    <button class="btn-add" onclick="addToCart('فول للطعوم')">إضافة للسلة</button>
+                </div>
             </div>
-
         </div>
-    </div>
-
-    <div id="infoModal" class="modal" onclick="closeModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <i id="modalIcon" style="font-size:3rem; color:var(--accent); margin-bottom:15px"></i>
-            <h2 id="modalTitle" style="color:var(--main); margin-bottom:10px"></h2>
-            <p id="modalText"></p>
-        </div>
-    </div>
+    </section>
 
     <footer>
-        <p>مبيعات محلي وتصدير - ابورواش - الجيزة - مصر</p>
-        <p>التواصل: 01126773698 | 01020508423</p>
-        <p style="opacity:0.6; font-size:0.8rem; margin-top:20px;">&copy; 2026 طرح بلدنا - جميع الحقوق محفوظة</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/share/1CCaVGVzz8/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/efyos820?igsh=MXhxam40GpweW12ag==" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:tarhbladna@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div style="margin-top: 30px;">
+            <p><i class="fas fa-map-marker-alt"></i> ابورواش - الجيزة - مصر</p>
+            <p><i class="fas fa-phone"></i> 01126773698 | 01020508423</p>
+        </div>
+        <p style="margin-top: 40px; opacity: 0.5; font-size: 0.8rem;">&copy; 2026 طرح بلدنا - جودة الأرض المصرية</p>
     </footer>
 
-    <a href="https://wa.me/201126773698" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
     <script>
-        const infoData = {
-            'exp': { title: "خبرة طويلة", icon: "fas fa-history", text: "لدينا باع طويل في تجارة المحاصيل وتجهيز الفول السوداني بأحدث الطرق." },
-            'quality': { title: "جودة مضمونة", icon: "fas fa-award", text: "نلتزم بأعلى معايير النظافة والفرز لضمان خروج منتج يليق باسمنا." },
-            'price': { title: "أسعار تنافسية", icon: "fas fa-tags", text: "بما أننا المورد المباشر، فنحن نضمن لك أفضل سعر للجملة والتصدير." },
-            'delivery': { title: "سرعة التوريد", icon: "fas fa-shuttle-van", text: "التزام كامل بمواعيد التسليم وتوريد الكميات المطلوبة في وقت قياسي." }
-        };
-        function openModal(t) {
-            document.getElementById('modalTitle').innerText = infoData[t].title;
-            document.getElementById('modalIcon').className = infoData[t].icon;
-            document.getElementById('modalText').innerText = infoData[t].text;
-            document.getElementById('infoModal').style.display = 'flex';
+        let cart = [];
+        function toggleCart() { document.getElementById('cartSidebar').classList.toggle('active'); }
+        
+        function addToCart(item) {
+            cart.push(item);
+            document.getElementById('cCount').innerText = cart.length;
+            renderCart();
+            if(!document.getElementById('cartSidebar').classList.contains('active')) toggleCart();
         }
-        function closeModal() { document.getElementById('infoModal').style.display = 'none'; }
+
+        function renderCart() {
+            const container = document.getElementById('cartItems');
+            container.innerHTML = cart.map((i, index) => `
+                <div style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid #eee;">
+                    <span>${i}</span>
+                    <i class="fas fa-trash" style="color:red; cursor:pointer;" onclick="removeItem(${index})"></i>
+                </div>
+            `).join('');
+        }
+
+        function removeItem(idx) {
+            cart.splice(idx, 1);
+            document.getElementById('cCount').innerText = cart.length;
+            renderCart();
+        }
+
+        function sendOrder() {
+            if(cart.length === 0) return alert('السلة فارغة');
+            let text = "طلب جديد من موقع طرح بلدنا:\n" + cart.map(i => "- " + i).join("\n");
+            window.open("https://wa.me/201126773698?text=" + encodeURIComponent(text));
+        }
     </script>
 </body>
 </html>
