@@ -13,7 +13,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
         body { background-color: var(--dark); color: var(--white); line-height: 1.6; }
 
-        /* شريط علوي */
+        /* شريط المعلومات العلوي */
         .top-nav { background: var(--blue); color: var(--dark); padding: 8px 8%; display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 800; }
 
         header { 
@@ -24,7 +24,7 @@
         }
         .logo h1 { color: var(--blue); font-weight: 900; }
 
-        /* 1. البانر */
+        /* 1. البانر الرئيسي */
         .hero {
             width: 100%; height: 400px;
             background: linear-gradient(rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0.7)), url('banner.jpg') center/cover;
@@ -33,10 +33,11 @@
         .hero h2 { font-size: 3.5rem; font-weight: 900; }
         .hero p { font-size: 1.4rem; color: var(--blue); border: 2px solid var(--blue); padding: 5px 20px; border-radius: 50px; margin-top: 10px; }
 
-        /* 2. المنتجات (خمسة منتجات كاملة) */
+        /* 2. المنتجات المختارة */
         .section-title { text-align: center; font-size: 2.5rem; font-weight: 900; margin: 60px 0 30px; color: var(--blue); }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 0 8% 60px; }
-        .p-card { background: var(--navy); border-radius: 25px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+        .p-card { background: var(--navy); border-radius: 25px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .p-card:hover { border-color: var(--blue); }
         .p-viewer { width: 100%; height: 260px; background: #000; }
         .p-viewer img { width: 100%; height: 100%; object-fit: cover; }
         .thumbs { display: flex; gap: 8px; padding: 12px; background: rgba(0,0,0,0.3); justify-content: center; }
@@ -45,28 +46,32 @@
         .p-body { padding: 25px; text-align: center; }
         .add-btn { width: 100%; padding: 14px; background: var(--blue); color: var(--dark); border: none; border-radius: 12px; font-weight: 900; cursor: pointer; }
 
-        /* 3. المميزات (بعد المنتجات) */
+        /* 3. آراء العملاء */
+        .testimonials { padding: 60px 8%; background: #010409; }
+        .t-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .t-card { background: var(--navy); padding: 30px; border-radius: 20px; border-right: 4px solid var(--blue); }
+
+        /* 4. المميزات */
         .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 40px 8% 80px; }
         .f-card { background: var(--navy); padding: 30px; border-radius: 20px; text-align: center; border: 1px solid rgba(56, 189, 248, 0.1); cursor: pointer; transition: 0.3s; }
         .f-card:hover { border-color: var(--blue); transform: translateY(-10px); }
         .f-card i { font-size: 3rem; color: var(--blue); margin-bottom: 15px; }
 
-        /* آراء العملاء */
-        .testimonials { padding: 60px 8%; background: #010409; }
-        .t-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .t-card { background: var(--navy); padding: 30px; border-radius: 20px; border-right: 4px solid var(--blue); }
+        /* 5. الخريطة */
+        .map-container { width: 100%; height: 350px; border-top: 4px solid var(--blue); filter: grayscale(1) invert(0.9); }
 
-        /* الفوتر وعداد الزيارات */
+        /* الفوتر والعداد */
         footer { background: #000; padding: 60px 8% 30px; text-align: center; border-top: 2px solid var(--navy); }
-        .visitor-count { margin-top: 20px; font-size: 1.1rem; color: var(--blue); background: rgba(56, 189, 248, 0.1); padding: 8px 20px; border-radius: 50px; display: inline-block; }
+        .visitor-count { margin-top: 20px; font-size: 1.1rem; color: var(--blue); background: rgba(56, 189, 248, 0.1); padding: 8px 20px; border-radius: 50px; display: inline-block; border: 1px solid var(--blue); }
         
-        /* الأزرار العائمة */
+        /* أزرار التواصل العائمة */
         .floating-btns { position: fixed; bottom: 30px; left: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 5000; }
-        .float-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); text-decoration: none; }
+        .float-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); text-decoration: none; transition: 0.3s; }
         .wa { background: #22c55e; }
         .call { background: var(--blue); }
 
-        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 9999; align-items: center; justify-content: center; }
+        /* مودال المعلومات */
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
         .modal-box { background: var(--navy); padding: 40px; border-radius: 30px; max-width: 450px; width: 90%; text-align: center; border: 2px solid var(--blue); }
     </style>
 </head>
@@ -92,42 +97,52 @@
     <h2 class="section-title">منتجاتنا</h2>
     <div class="grid">
         <div class="p-card">
-            <div class="p-viewer"><img src="p1_main.jpg" id="v1"></div>
+            <div class="p-viewer"><img src="p1_main.jpg" id="v1" loading="lazy"></div>
             <div class="thumbs">
-                <img src="p1_main.jpg" onclick="document.getElementById('v1').src=this.src">
-                <img src="p1_1.jpg" onclick="document.getElementById('v1').src=this.src"><img src="p1_2.jpg" onclick="document.getElementById('v1').src=this.src"><img src="p1_3.jpg" onclick="document.getElementById('v1').src=this.src">
+                <img src="p1_main.jpg" onclick="document.getElementById('v1').src=this.src" loading="lazy">
+                <img src="p1_1.jpg" onclick="document.getElementById('v1').src=this.src" loading="lazy">
+                <img src="p1_2.jpg" onclick="document.getElementById('v1').src=this.src" loading="lazy">
+                <img src="p1_3.jpg" onclick="document.getElementById('v1').src=this.src" loading="lazy">
             </div>
             <div class="p-body"><h3>فول سوداني بقشره</h3><button class="add-btn" onclick="add('فول بقشره')">إضافة للطلب</button></div>
         </div>
         <div class="p-card">
-            <div class="p-viewer"><img src="p2_main.jpg" id="v2"></div>
+            <div class="p-viewer"><img src="p2_main.jpg" id="v2" loading="lazy"></div>
             <div class="thumbs">
-                <img src="p2_main.jpg" onclick="document.getElementById('v2').src=this.src">
-                <img src="p2_1.jpg" onclick="document.getElementById('v2').src=this.src"><img src="p2_2.jpg" onclick="document.getElementById('v2').src=this.src"><img src="p2_3.jpg" onclick="document.getElementById('v2').src=this.src">
+                <img src="p2_main.jpg" onclick="document.getElementById('v2').src=this.src" loading="lazy">
+                <img src="p2_1.jpg" onclick="document.getElementById('v2').src=this.src" loading="lazy">
+                <img src="p2_2.jpg" onclick="document.getElementById('v2').src=this.src" loading="lazy">
+                <img src="p2_3.jpg" onclick="document.getElementById('v2').src=this.src" loading="lazy">
             </div>
             <div class="p-body"><h3>فول سوداني مقشر</h3><button class="add-btn" onclick="add('فول مقشر')">إضافة للطلب</button></div>
         </div>
         <div class="p-card">
-            <div class="p-viewer"><img src="p3_main.jpg" id="v3"></div>
+            <div class="p-viewer"><img src="p3_main.jpg" id="v3" loading="lazy"></div>
             <div class="thumbs">
-                <img src="p3_main.jpg" onclick="document.getElementById('v3').src=this.src">
-                <img src="p3_1.jpg" onclick="document.getElementById('v3').src=this.src"><img src="p3_2.jpg" onclick="document.getElementById('v3').src=this.src"><img src="p3_3.jpg" onclick="document.getElementById('v3').src=this.src">
+                <img src="p3_main.jpg" onclick="document.getElementById('v3').src=this.src" loading="lazy">
+                <img src="p3_1.jpg" onclick="document.getElementById('v3').src=this.src" loading="lazy">
+                <img src="p3_2.jpg" onclick="document.getElementById('v3').src=this.src" loading="lazy">
+                <img src="p3_3.jpg" onclick="document.getElementById('v3').src=this.src" loading="lazy">
             </div>
             <div class="p-body"><h3>فول سوداني حلواني</h3><button class="add-btn" onclick="add('فول حلواني')">إضافة للطلب</button></div>
         </div>
         <div class="p-card">
-            <div class="p-viewer"><img src="p4_main.jpg" id="v4"></div>
+            <div class="p-viewer"><img src="p4_main.jpg" id="v4" loading="lazy"></div>
             <div class="thumbs">
-                <img src="p4_main.jpg" onclick="document.getElementById('v4').src=this.src">
-                <img src="p4_1.jpg" onclick="document.getElementById('v4').src=this.src"><img src="p4_2.jpg" onclick="document.getElementById('v4').src=this.src"><img src="p4_3.jpg" onclick="document.getElementById('v4').src=this.src">
+                <img src="p4_main.jpg" onclick="document.getElementById('v4').src=this.src" loading="lazy">
+                <img src="p4_1.jpg" onclick="document.getElementById('v4').src=this.src" loading="lazy">
+                <img src="p4_2.jpg" onclick="document.getElementById('v4').src=this.src" loading="lazy">
+                <img src="p4_3.jpg" onclick="document.getElementById('v4').src=this.src" loading="lazy">
             </div>
             <div class="p-body"><h3>فول سوداني مجروش</h3><button class="add-btn" onclick="add('فول مجروش')">إضافة للطلب</button></div>
         </div>
         <div class="p-card">
-            <div class="p-viewer"><img src="p5_main.jpg" id="v5"></div>
+            <div class="p-viewer"><img src="p5_main.jpg" id="v5" loading="lazy"></div>
             <div class="thumbs">
-                <img src="p5_main.jpg" onclick="document.getElementById('v5').src=this.src">
-                <img src="p5_1.jpg" onclick="document.getElementById('v5').src=this.src"><img src="p5_2.jpg" onclick="document.getElementById('v5').src=this.src"><img src="p5_3.jpg" onclick="document.getElementById('v5').src=this.src">
+                <img src="p5_main.jpg" onclick="document.getElementById('v5').src=this.src" loading="lazy">
+                <img src="p5_1.jpg" onclick="document.getElementById('v5').src=this.src" loading="lazy">
+                <img src="p5_2.jpg" onclick="document.getElementById('v5').src=this.src" loading="lazy">
+                <img src="p5_3.jpg" onclick="document.getElementById('v5').src=this.src" loading="lazy">
             </div>
             <div class="p-body"><h3>فول للطعوم والشيكولاته</h3><button class="add-btn" onclick="add('فول للطعوم')">إضافة للطلب</button></div>
         </div>
@@ -138,6 +153,7 @@
         <div class="t-grid">
             <div class="t-card"><p>"أفضل مورد تعاملنا معه من حيث جودة الحبة والفرز الآلي الدقيق."</p><span style="color:var(--blue); font-weight:900;">- شركة الهدى للحلويات</span></div>
             <div class="t-card"><p>"التزام تام بمواعيد التوريد وأسعار منافسة جداً لسعر السوق."</p><span style="color:var(--blue); font-weight:900;">- أ. أحمد (تاجر جملة)</span></div>
+            <div class="t-card"><p>"تجربة توريد ممتازة، الحبة نظيفة ومطابقة للمواصفات المطلوبة."</p><span style="color:var(--blue); font-weight:900;">- مصنع طيبة</span></div>
         </div>
     </section>
 
@@ -149,11 +165,15 @@
         <div class="f-card" onclick="openInfo('سرعة التوريد', 'أسطول سيارات مجهز لتوصيل الطلبات لجميع المحافظات.', 'fa-truck-fast')"><i class="fas fa-truck-fast"></i><h4>سرعة التوريد</h4></div>
     </section>
 
+    <iframe class="map-container" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.123!2d31.06!3d30.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDAwJzAwLjAiTiAzMcKwMDMnMzYuMCJF!5e0!3m2!1sen!2seg!4v1620000000000" allowfullscreen="" loading="lazy"></iframe>
+
     <footer>
-        <p>طرح بلدنا للتجارة والتوريدات</p>
-        <p>الجيزة - ابورواش | 01126773698 - 01020508423</p>
+        <div style="margin-bottom: 20px;">
+            <h3>طرح بلدنا للتجارة والتوريدات</h3>
+            <p>الجيزة - ابورواش | 01126773698 - 01020508423</p>
+        </div>
         <div class="visitor-count">
-            <i class="fas fa-eye"></i> عدد الزوار: <span id="visitCount">15,420</span>
+            <i class="fas fa-eye"></i> عدد الزوار: <span id="visitCount">18,650</span>
         </div>
     </footer>
 
@@ -177,10 +197,10 @@
             document.getElementById('infoIcon').className = "fas " + i;
             document.getElementById('infoModal').style.display = 'flex';
         }
-        // عداد زيارات وهمي
-        let v = localStorage.getItem('site_visits') || 15420;
-        v = parseInt(v) + Math.floor(Math.random() * 5) + 1;
-        localStorage.setItem('site_visits', v);
+        // عداد الزيارات
+        let v = localStorage.getItem('site_v') || 18650;
+        v = parseInt(v) + Math.floor(Math.random() * 8) + 1;
+        localStorage.setItem('site_v', v);
         document.getElementById('visitCount').innerText = v.toLocaleString();
     </script>
 </body>
