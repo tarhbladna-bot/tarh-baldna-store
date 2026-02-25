@@ -13,29 +13,35 @@
 
   <style>
    :root{
-  --bg:#0c0c0f;
-  --bg2:#141419;
-  --card:#1a1a22;
+      --bg:#0c0c0f;
+      --bg2:#141419;
+      --card:#1a1a22;
 
-  --accent:#b87333;      /* نحاسي */
-  --accent2:#e0a96d;     /* نحاسي فاتح */
+      /* ✅ GOLD ACCENT */
+      --blue:#F2B705;
+      --blue2:#FFD35A;
+      --blueGlow: rgba(242,183,5,.35);
+      --blueGlow2: rgba(255,211,90,.25);
 
-  --text:#f5f5f7;
-  --muted:#a1a1aa;
+      --accent:#F2B705;
+      --accent2:#FFD35A;
 
-  --line:rgba(184,115,51,.25);
-  --shadow:0 18px 60px rgba(0,0,0,.65);
-  --r:18px;
-}
+      --text:#f5f5f7;
+      --muted:#a1a1aa;
+
+      --line:rgba(242,183,5,.22);
+      --shadow:0 18px 60px rgba(0,0,0,.65);
+      --r:18px;
+    }
 
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
 
     body{
       background:
-        radial-gradient(1200px 700px at 18% -10%, rgba(10,61,145,.20), transparent 62%),
-        radial-gradient(900px 500px at 100% 0%, rgba(26,90,168,.12), transparent 58%),
-        radial-gradient(900px 600px at 55% 110%, rgba(26,90,168,.08), transparent 60%),
+        radial-gradient(1200px 700px at 18% -10%, rgba(242,183,5,.18), transparent 62%),
+        radial-gradient(900px 500px at 100% 0%, rgba(255,211,90,.10), transparent 58%),
+        radial-gradient(900px 600px at 55% 110%, rgba(255,211,90,.07), transparent 60%),
         linear-gradient(180deg,var(--bg),var(--bg2));
       color:var(--text);
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans Arabic",sans-serif;
@@ -45,39 +51,58 @@
     a{color:inherit;text-decoration:none}
     .ltr{direction:ltr; unicode-bidi:embed}
     .container{max-width:1200px;margin:0 auto;padding:0 18px}
-    .gold{color:var(--blue2)} /* keep class name but blue */
+    .gold{color:var(--blue2)}
+
+    /* ✅ SVG Icons */
+    .ico{
+      width:22px;height:22px;
+      display:inline-flex;align-items:center;justify-content:center;
+      color:var(--blue2);
+      flex:0 0 auto;
+    }
+    .ico svg{
+      width:22px;height:22px;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:2;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+    .stat__icon{width:36px;height:36px}
+    .stat__icon .ico{width:20px;height:20px}
+    .stat__icon .ico svg{width:20px;height:20px}
 
     /* ✅ Premium subtle glow helper */
     .glowEdge{
       box-shadow:
-        0 0 0 1px rgba(26,90,168,.15),
-        0 0 22px rgba(10,61,145,.18),
+        0 0 0 1px rgba(242,183,5,.15),
+        0 0 22px rgba(242,183,5,.16),
         0 18px 60px rgba(0,0,0,.35);
     }
 
     /* Sticky banner */
     .announce{
       position:sticky; top:0; z-index:80;
-      background:linear-gradient(90deg, rgba(10,61,145,.28), rgba(0,0,0,.72), rgba(26,90,168,.22));
-      border-bottom:1px solid rgba(10,61,145,.25);
+      background:linear-gradient(90deg, rgba(242,183,5,.20), rgba(0,0,0,.72), rgba(255,211,90,.16));
+      border-bottom:1px solid rgba(242,183,5,.25);
       backdrop-filter: blur(10px);
     }
     .announce__inner{
       display:flex;align-items:center;justify-content:space-between;gap:12px;
       padding:10px 0;font-size:13px;flex-wrap:wrap;
     }
-    .announce__text{color:#d7e7ff;font-weight:900}
+    .announce__text{color:rgba(255,211,90,.95);font-weight:900}
     .announce__right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
     .announce__link{color:rgba(244,244,245,.92);font-weight:800}
-    .announce__link:hover{color:#d7e7ff}
-    .dot{color:rgba(26,90,168,.60)}
+    .announce__link:hover{color:rgba(255,211,90,.95)}
+    .dot{color:rgba(255,211,90,.55)}
 
     /* Header */
     header{
       position:sticky; top:44px; z-index:70;
       background:rgba(7,7,10,.68);
       backdrop-filter: blur(10px);
-      border-bottom:1px solid rgba(10,61,145,.16);
+      border-bottom:1px solid rgba(242,183,5,.14);
     }
     .topbar{
       display:flex; align-items:center; justify-content:space-between; gap:14px;
@@ -98,30 +123,30 @@
     }
     nav a:hover{
       color:var(--text);
-      background:rgba(10,61,145,.10);
-      border-color:rgba(10,61,145,.22);
+      background:rgba(242,183,5,.10);
+      border-color:rgba(242,183,5,.22);
       box-shadow:0 0 14px var(--blueGlow2);
     }
 
     .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 
     .btn{
-      border:1px solid rgba(10,61,145,.24);
+      border:1px solid rgba(242,183,5,.24);
       border-radius:14px;
       padding:10px 14px;font-weight:900;cursor:pointer;
       display:inline-flex;gap:10px;align-items:center;justify-content:center;
       background:rgba(255,255,255,.03);color:var(--text);
-      box-shadow:0 0 16px rgba(10,61,145,.08);
+      box-shadow:0 0 16px rgba(242,183,5,.08);
     }
     .btn:hover{
-      background:rgba(10,61,145,.10);
+      background:rgba(242,183,5,.10);
       box-shadow:0 0 18px var(--blueGlow2);
-      border-color:rgba(26,90,168,.40);
+      border-color:rgba(255,211,90,.40);
     }
     .btn--gold{
       background:linear-gradient(135deg,var(--blue),var(--blue2));
-      color:#eaf3ff;border-color:transparent;
-      box-shadow:0 14px 35px rgba(10,61,145,.22);
+      color:#111;border-color:transparent;
+      box-shadow:0 14px 35px rgba(242,183,5,.22);
     }
     .btn--gold:hover{filter:brightness(1.02)}
     .badge{
@@ -135,12 +160,12 @@
     .hero__grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:start}
     .pill{
       display:inline-flex;padding:7px 10px;
-      border:1px solid rgba(10,61,145,.30);
+      border:1px solid rgba(242,183,5,.30);
       border-radius:999px;
-      color:#d7e7ff;
-      background:rgba(10,61,145,.12);
+      color:rgba(255,211,90,.95);
+      background:rgba(242,183,5,.12);
       font-size:13px;font-weight:900;
-      box-shadow:0 0 16px rgba(10,61,145,.18);
+      box-shadow:0 0 16px rgba(242,183,5,.18);
     }
     .hero__title{margin:14px 0 10px;line-height:1.15;font-size:44px;letter-spacing:.2px}
     .hero__desc{color:var(--muted);font-size:16px;max-width:62ch;line-height:1.8}
@@ -149,41 +174,41 @@
     .hero__meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
     .meta{
       background:rgba(255,255,255,.03);
-      border:1px solid rgba(10,61,145,.22);
+      border:1px solid rgba(242,183,5,.22);
       border-radius:16px;padding:12px;
-      box-shadow:0 0 18px rgba(10,61,145,.10);
+      box-shadow:0 0 18px rgba(242,183,5,.10);
     }
     .meta__label{font-size:12px;color:var(--muted)}
     .meta__value{margin-top:6px;font-size:16px;font-weight:1000}
 
     .hero__card{
       background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
-      border:1px solid rgba(10,61,145,.24);
+      border:1px solid rgba(242,183,5,.24);
       border-radius:var(--r);
       box-shadow:var(--shadow);
       overflow:hidden;
     }
-    .hero__cardTop{padding:18px;border-bottom:1px solid rgba(10,61,145,.14)}
+    .hero__cardTop{padding:18px;border-bottom:1px solid rgba(242,183,5,.14)}
     .hero__cardTitle{font-weight:1000;font-size:18px}
     .hero__cardSub{color:var(--muted);font-size:13px;margin-top:4px}
 
     .hero__stats{padding:10px}
     .stat{display:flex;gap:12px;padding:12px;border-radius:14px}
-    .stat:hover{background:rgba(10,61,145,.10)}
+    .stat:hover{background:rgba(242,183,5,.10)}
     .stat__icon{
       width:36px;height:36px;border-radius:12px;display:grid;place-items:center;
-      background:rgba(10,61,145,.15);
-      border:1px solid rgba(10,61,145,.30);
+      background:rgba(242,183,5,.14);
+      border:1px solid rgba(242,183,5,.30);
       box-shadow:0 0 16px var(--blueGlow2);
     }
     .stat__h{font-weight:1000}
     .stat__p{color:var(--muted);font-size:13px;margin-top:2px;line-height:1.6}
 
     .hero__cardBottom{
-      padding:14px;border-top:1px solid rgba(10,61,145,.14);
+      padding:14px;border-top:1px solid rgba(242,183,5,.14);
       display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;
     }
-    .miniLink{color:#d7e7ff;font-weight:1000}
+    .miniLink{color:rgba(255,211,90,.95);font-weight:1000}
     .miniLink:hover{color:#ffffff}
     .sep{color:rgba(255,255,255,.25)}
 
@@ -191,12 +216,13 @@
     .section{padding:44px 0}
     .section--alt{
       background:rgba(255,255,255,.02);
-      border-top:1px solid rgba(10,61,145,.10);
-      border-bottom:1px solid rgba(10,61,145,.10)
+      border-top:1px solid rgba(242,183,5,.10);
+      border-bottom:1px solid rgba(242,183,5,.10)
     }
     .section__head{margin-bottom:18px}
     .section__head h2{margin:0;font-size:28px}
     .section__head p{margin:8px 0 0;color:var(--muted);line-height:1.8}
+    .section__head p:empty{display:none}
 
     .grid{display:grid;gap:14px}
     .products{grid-template-columns:repeat(3,1fr)}
@@ -206,10 +232,10 @@
     /* Product cards */
     .product{
       background:rgba(255,255,255,.03);
-      border:1px solid rgba(10,61,145,.30);
+      border:1px solid rgba(242,183,5,.30);
       border-radius:var(--r);
       overflow:hidden;
-      box-shadow:0 0 22px rgba(10,61,145,.16);
+      box-shadow:0 0 22px rgba(242,183,5,.14);
       transition:.25s ease;
     }
     .product:hover{
@@ -217,7 +243,7 @@
       box-shadow:
         0 0 26px var(--blueGlow),
         0 18px 55px rgba(0,0,0,.35);
-      border-color:rgba(26,90,168,.55);
+      border-color:rgba(255,211,90,.55);
     }
     .product__head{padding:14px 14px 10px}
     .product__name{font-weight:1000;font-size:18px}
@@ -226,33 +252,33 @@
     .product__gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:12px}
     .product__gallery img{
       width:100%;height:88px;object-fit:cover;border-radius:12px;
-      border:1px solid rgba(10,61,145,.20);
+      border:1px solid rgba(242,183,5,.20);
       background:rgba(0,0,0,.25);
       cursor:pointer;
       transition:.2s ease;
     }
     .product__gallery img:hover{
       transform:translateY(-2px);
-      box-shadow:0 0 18px rgba(10,61,145,.22);
-      border-color:rgba(26,90,168,.55);
+      box-shadow:0 0 18px rgba(242,183,5,.22);
+      border-color:rgba(255,211,90,.55);
     }
 
     .product__foot{
       display:flex;gap:10px;align-items:center;justify-content:space-between;
-      padding:12px 14px 14px;border-top:1px solid rgba(10,61,145,.12);flex-wrap:wrap
+      padding:12px 14px 14px;border-top:1px solid rgba(242,183,5,.12);flex-wrap:wrap
     }
     .qty{display:flex;gap:8px;align-items:center}
     .qty button{
       width:36px;height:36px;border-radius:12px;
-      border:1px solid rgba(10,61,145,.32);
+      border:1px solid rgba(242,183,5,.32);
       background:rgba(255,255,255,.03);
       color:var(--text);
       cursor:pointer;
       font-weight:1000;
-      box-shadow:0 0 14px rgba(10,61,145,.18);
+      box-shadow:0 0 14px rgba(242,183,5,.18);
     }
     .qty button:hover{
-      background:rgba(10,61,145,.12);
+      background:rgba(242,183,5,.12);
       box-shadow:0 0 16px var(--blueGlow2);
     }
     .qty span{min-width:24px;text-align:center;font-weight:1000}
@@ -260,16 +286,16 @@
     /* Info cards */
     .card{
       background:rgba(255,255,255,.03);
-      border:1px solid rgba(10,61,145,.24);
+      border:1px solid rgba(242,183,5,.24);
       border-radius:var(--r);
       padding:16px;
-      box-shadow:0 0 18px rgba(10,61,145,.10);
+      box-shadow:0 0 18px rgba(242,183,5,.10);
       transition:.25s ease;
     }
     .card:hover{
       transform:translateY(-3px);
-      box-shadow:0 0 22px rgba(10,61,145,.18);
-      border-color:rgba(26,90,168,.55);
+      box-shadow:0 0 22px rgba(242,183,5,.18);
+      border-color:rgba(255,211,90,.55);
     }
     .card__icon{font-size:22px}
     .card__h{margin-top:10px;font-weight:1000}
@@ -278,33 +304,33 @@
     /* Reviews */
     .review{
       background:rgba(255,255,255,.03);
-      border:1px solid rgba(10,61,145,.24);
+      border:1px solid rgba(242,183,5,.24);
       border-radius:var(--r);
       padding:16px;
-      box-shadow:0 0 18px rgba(10,61,145,.10);
+      box-shadow:0 0 18px rgba(242,183,5,.10);
       transition:.25s ease;
     }
     .review:hover{
       transform:translateY(-3px);
-      border-color:rgba(26,90,168,.55);
-      box-shadow:0 0 22px rgba(10,61,145,.18);
+      border-color:rgba(255,211,90,.55);
+      box-shadow:0 0 22px rgba(242,183,5,.18);
     }
     .review__name{font-weight:1000}
-    .review__stars{color:#d7e7ff;letter-spacing:1px;margin-top:6px}
+    .review__stars{color:var(--blue2);letter-spacing:1px;margin-top:6px}
     .review__text{color:var(--muted);margin-top:8px;font-size:14px;line-height:1.7}
 
     /* Contact */
     .contactGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
     .contactCard{
       background:rgba(255,255,255,.03);
-      border:1px solid rgba(10,61,145,.24);
+      border:1px solid rgba(242,183,5,.24);
       border-radius:var(--r);
       padding:16px;
-      box-shadow:0 0 18px rgba(10,61,145,.10);
+      box-shadow:0 0 18px rgba(242,183,5,.10);
     }
     .contactRow{
       display:flex;justify-content:space-between;gap:12px;
-      padding:10px 0;border-bottom:1px dashed rgba(10,61,145,.18)
+      padding:10px 0;border-bottom:1px dashed rgba(242,183,5,.18)
     }
     .contactRow:last-child{border-bottom:none}
     .k{color:var(--muted)}
@@ -314,7 +340,7 @@
 
     /* Footer */
     footer{
-      padding:18px 0;border-top:1px solid rgba(10,61,145,.12);
+      padding:18px 0;border-top:1px solid rgba(242,183,5,.12);
       background:rgba(0,0,0,.22)
     }
     .footer__inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
@@ -334,17 +360,27 @@
     .floater{
       width:52px;height:52px;border-radius:18px;
       display:grid;place-items:center;
-      border:1px solid rgba(10,61,145,.30);
+      border:1px solid rgba(242,183,5,.30);
       background:rgba(15,15,24,.88);
-      color:var(--text);
+      color:var(--blue2);
       box-shadow:0 18px 55px rgba(0,0,0,.5);
       font-weight:1000;
       user-select:none;
     }
-    .floater:hover{transform:translateY(-1px)}
-    .floater--whats{border-color:rgba(37,211,102,.35)}
-    .floater--call{border-color:rgba(10,61,145,.40)}
-    .floater--msg{border-color:rgba(0,132,255,.35)}
+    .floater:hover{transform:translateY(-1px); box-shadow:0 18px 55px rgba(0,0,0,.5), 0 0 18px var(--blueGlow2);}
+    .floater--whats{border-color:rgba(37,211,102,.35); color:#25D366;}
+    .floater--call{border-color:rgba(242,183,5,.40)}
+    .floater--msg{border-color:rgba(242,183,5,.35)}
+
+    /* Floater SVG */
+    .floater svg{
+      width:22px;height:22px;
+      stroke:currentColor;
+      fill:none;
+      stroke-width:2;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
 
     /* Cart drawer */
     .drawer{position:fixed; inset:0; z-index:100; display:none}
@@ -354,14 +390,14 @@
       position:absolute; top:0; bottom:0;
       width:min(420px, 92vw);
       background:linear-gradient(180deg, rgba(15,15,24,.98), rgba(10,10,16,.98));
-      border:1px solid rgba(10,61,145,.32);
+      border:1px solid rgba(242,183,5,.32);
       box-shadow:0 0 30px var(--blueGlow), var(--shadow);
       padding:14px;
     }
     html[dir="rtl"] .drawer__panel{left:0}
     html[dir="ltr"] .drawer__panel{right:0}
 
-    .drawer__head{display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid rgba(10,61,145,.14)}
+    .drawer__head{display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid rgba(242,183,5,.14)}
     .drawer__title{font-weight:1000}
     .iconBtn{border:none;background:transparent;color:var(--text);font-size:18px;cursor:pointer}
 
@@ -369,7 +405,7 @@
     .cartItem{
       display:flex;justify-content:space-between;gap:12px;
       padding:12px;border-radius:16px;
-      border:1px solid rgba(10,61,145,.18);
+      border:1px solid rgba(242,183,5,.18);
       background:rgba(255,255,255,.02);
       margin-bottom:10px;
     }
@@ -378,16 +414,16 @@
     .cartItem__actions{display:flex;gap:8px;align-items:center}
     .cartItem__actions button{
       width:34px;height:34px;border-radius:12px;
-      border:1px solid rgba(10,61,145,.32);
+      border:1px solid rgba(242,183,5,.32);
       background:rgba(255,255,255,.03);
       color:var(--text);
       cursor:pointer;
       font-weight:1000;
-      box-shadow:0 0 14px rgba(10,61,145,.18);
+      box-shadow:0 0 14px rgba(242,183,5,.18);
     }
     .cartEmpty{color:var(--muted);padding:18px 4px;text-align:center}
 
-    .drawer__foot{border-top:1px solid rgba(10,61,145,.14);padding-top:12px}
+    .drawer__foot{border-top:1px solid rgba(242,183,5,.14);padding-top:12px}
     .cartNote{color:var(--muted);font-size:12px;line-height:1.6;margin-bottom:10px}
     .w100{width:100%}
 
@@ -399,17 +435,17 @@
       position:absolute; inset:0; margin:auto;
       width:min(900px, 92vw); height:min(560px, 80vh);
       background:rgba(15,15,24,.98);
-      border:1px solid rgba(10,61,145,.28);
+      border:1px solid rgba(242,183,5,.28);
       border-radius:18px;
       box-shadow:0 0 30px var(--blueGlow), var(--shadow);
       display:grid;
       grid-template-rows:auto 1fr;
       overflow:hidden;
     }
-    .imgModal__head{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid rgba(10,61,145,.14)}
+    .imgModal__head{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid rgba(242,183,5,.14)}
     .imgModal__title{font-weight:1000}
     .imgModal__body{display:grid;place-items:center;padding:12px}
-    .imgModal__body img{max-width:100%;max-height:100%;border-radius:14px;border:1px solid rgba(10,61,145,.16)}
+    .imgModal__body img{max-width:100%;max-height:100%;border-radius:14px;border:1px solid rgba(242,183,5,.16)}
 
     @media (max-width: 980px){
       .hero__grid{grid-template-columns:1fr}
@@ -425,6 +461,16 @@
       .reviews{grid-template-columns:1fr}
       .hero__title{font-size:34px}
       .hero__meta{grid-template-columns:1fr}
+    }
+
+    :focus-visible{
+      outline: 2px solid rgba(255,211,90,.55);
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
+    ::selection{
+      background: rgba(242,183,5,.25);
+      color: var(--text);
     }
   </style>
 </head>
@@ -452,8 +498,8 @@
         <svg class="logo" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-label="Logo">
           <defs>
             <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#0a3d91"/>
-              <stop offset="1" stop-color="#1a5aa8"/>
+              <stop offset="0" stop-color="#F2B705"/>
+              <stop offset="1" stop-color="#FFD35A"/>
             </linearGradient>
           </defs>
           <rect x="22" y="22" width="212" height="212" rx="40" fill="#0a0a10" stroke="url(#g)" stroke-width="4"/>
@@ -461,8 +507,8 @@
                 fill="none" stroke="url(#g)" stroke-width="10" stroke-linecap="round"/>
           <path d="M116 150c0-14 9-28 22-28 12 0 20 10 20 24 0 14-9 28-22 28-12 0-20-10-20-24z"
                 fill="none" stroke="url(#g)" stroke-width="8" stroke-linecap="round" opacity=".8"/>
-          <circle cx="112" cy="154" r="4" fill="#1a5aa8"/>
-          <circle cx="146" cy="150" r="4" fill="#1a5aa8"/>
+          <circle cx="112" cy="154" r="4" fill="#FFD35A"/>
+          <circle cx="146" cy="150" r="4" fill="#FFD35A"/>
         </svg>
 
         <div>
@@ -535,7 +581,7 @@
 
         <div class="hero__stats">
           <div class="stat">
-            <div class="stat__icon">🚚</div>
+            <div class="stat__icon"><span class="ico"><svg><use href="#i-truck"></use></svg></span></div>
             <div>
               <div class="stat__h" data-i18n="why.fast">سرعة التوصيل</div>
               <div class="stat__p" data-i18n="why.fastDesc">استجابة سريعة وتجهيز الطلبات بأفضل وقت مع متابعة مستمرة.</div>
@@ -543,7 +589,7 @@
           </div>
 
           <div class="stat">
-            <div class="stat__icon">🏆</div>
+            <div class="stat__icon"><span class="ico"><svg><use href="#i-trophy"></use></svg></span></div>
             <div>
               <div class="stat__h" data-i18n="why.exp">خبرة طويلة</div>
               <div class="stat__p" data-i18n="why.expDesc">خبرة في الفرز والتعبئة ومتطلبات التجار والمصانع.</div>
@@ -551,7 +597,7 @@
           </div>
 
           <div class="stat">
-            <div class="stat__icon">💰</div>
+            <div class="stat__icon"><span class="ico"><svg><use href="#i-money"></use></svg></span></div>
             <div>
               <div class="stat__h" data-i18n="why.price">أسعار تنافسية</div>
               <div class="stat__p" data-i18n="why.priceDesc">أفضل سعر مقابل جودة ثابتة ومواصفات واضحة.</div>
@@ -559,7 +605,7 @@
           </div>
 
           <div class="stat">
-            <div class="stat__icon">✅</div>
+            <div class="stat__icon"><span class="ico"><svg><use href="#i-check"></use></svg></span></div>
             <div>
               <div class="stat__h" data-i18n="why.quality">جودة مضمونة</div>
               <div class="stat__p" data-i18n="why.qualityDesc">فرز نظيف وتعبئة منظمة لضمان أفضل تجربة للعميل.</div>
@@ -599,25 +645,25 @@
 
       <div class="grid why">
         <div class="card">
-          <div class="card__icon">🚚</div>
+          <div class="card__icon"><span class="ico"><svg><use href="#i-truck"></use></svg></span></div>
           <div class="card__h" data-i18n="why.fast">سرعة التوصيل</div>
           <div class="card__p" data-i18n="why.fastDesc">استجابة سريعة وتجهيز الطلبات بأفضل وقت مع متابعة مستمرة.</div>
         </div>
 
         <div class="card">
-          <div class="card__icon">🏆</div>
+          <div class="card__icon"><span class="ico"><svg><use href="#i-trophy"></use></svg></span></div>
           <div class="card__h" data-i18n="why.exp">خبرة طويلة</div>
           <div class="card__p" data-i18n="why.expDesc">خبرة في الفرز والتعبئة ومتطلبات التجار والمصانع.</div>
         </div>
 
         <div class="card">
-          <div class="card__icon">💰</div>
+          <div class="card__icon"><span class="ico"><svg><use href="#i-money"></use></svg></span></div>
           <div class="card__h" data-i18n="why.price">أسعار تنافسية</div>
           <div class="card__p" data-i18n="why.priceDesc">أفضل سعر مقابل جودة ثابتة ومواصفات واضحة.</div>
         </div>
 
         <div class="card">
-          <div class="card__icon">✅</div>
+          <div class="card__icon"><span class="ico"><svg><use href="#i-check"></use></svg></span></div>
           <div class="card__h" data-i18n="why.quality">جودة مضمونة</div>
           <div class="card__p" data-i18n="why.qualityDesc">فرز نظيف وتعبئة منظمة لضمان أفضل تجربة للعميل.</div>
         </div>
@@ -630,7 +676,8 @@
     <div class="container">
       <div class="section__head">
         <h2 data-i18n="reviews.title">آراء العملاء</h2>
-        <p data-i18n="reviews.desc">.</p>
+        <!-- ✅ no extra text under reviews -->
+        <p data-i18n="reviews.desc"></p>
       </div>
       <div class="grid reviews" id="reviewsGrid"></div>
     </div>
@@ -705,8 +752,8 @@
         <svg class="footer__logo" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-label="Logo small">
           <defs>
             <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#0a3d91"/>
-              <stop offset="1" stop-color="#1a5aa8"/>
+              <stop offset="0" stop-color="#F2B705"/>
+              <stop offset="1" stop-color="#FFD35A"/>
             </linearGradient>
           </defs>
           <rect x="22" y="22" width="212" height="212" rx="40" fill="#0a0a10" stroke="url(#g2)" stroke-width="4"/>
@@ -724,19 +771,22 @@
     </div>
   </footer>
 
-  <!-- ✅ Floating Icons -->
+  <!-- ✅ Floating Icons (SVG) -->
   <div class="floaters" aria-label="Floating actions">
-    <!-- WhatsApp -->
     <a class="floater floater--whats" target="_blank"
        href="https://wa.me/201126773698?text=%D8%A3%D9%87%D9%84%D8%A7%20%D8%B7%D8%B1%D8%AD%20%D8%A8%D9%84%D8%AF%D9%86%D8%A7%20%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1"
-       title="WhatsApp">WA</a>
+       title="WhatsApp" aria-label="WhatsApp">
+      <svg aria-hidden="true"><use href="#i-whatsapp"></use></svg>
+    </a>
 
-    <!-- Call -->
-    <a class="floater floater--call" href="tel:01126773698" title="Call">☎</a>
+    <a class="floater floater--call" href="tel:01126773698" title="Call" aria-label="Call">
+      <svg aria-hidden="true"><use href="#i-phone"></use></svg>
+    </a>
 
-    <!-- Messenger -->
     <a class="floater floater--msg" target="_blank"
-       href="https://www.facebook.com/share/1CsNFUADgR/" title="Messenger">M</a>
+       href="https://www.facebook.com/share/1CsNFUADgR/" title="Messenger" aria-label="Messenger">
+      <svg aria-hidden="true"><use href="#i-messenger"></use></svg>
+    </a>
   </div>
 
   <!-- ✅ Cart Drawer -->
@@ -773,6 +823,60 @@
       </div>
     </div>
   </div>
+
+  <!-- ✅ SVG Icons Library -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <!-- Truck -->
+    <symbol id="i-truck" viewBox="0 0 24 24">
+      <path d="M3 7h11v10H3z"/>
+      <path d="M14 10h4l3 3v4h-7z"/>
+      <circle cx="7" cy="19" r="1.7"/>
+      <circle cx="17" cy="19" r="1.7"/>
+    </symbol>
+
+    <!-- Trophy -->
+    <symbol id="i-trophy" viewBox="0 0 24 24">
+      <path d="M8 4h8v3a4 4 0 0 1-8 0V4z"/>
+      <path d="M6 4H4v2a5 5 0 0 0 4 5"/>
+      <path d="M18 4h2v2a5 5 0 0 1-4 5"/>
+      <path d="M12 11v4"/>
+      <path d="M9 21h6"/>
+      <path d="M10 15h4"/>
+    </symbol>
+
+    <!-- Money -->
+    <symbol id="i-money" viewBox="0 0 24 24">
+      <path d="M3 7h18v10H3z"/>
+      <path d="M7 7a3 3 0 0 1-3 3"/>
+      <path d="M20 10a3 3 0 0 1-3-3"/>
+      <path d="M7 17a3 3 0 0 0-3-3"/>
+      <path d="M20 14a3 3 0 0 0-3 3"/>
+      <circle cx="12" cy="12" r="2.2"/>
+    </symbol>
+
+    <!-- Shield Check -->
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="M12 2l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V6l8-4z"/>
+      <path d="M9 12l2 2 4-5"/>
+    </symbol>
+
+    <!-- WhatsApp (simple bubble + phone) -->
+    <symbol id="i-whatsapp" viewBox="0 0 24 24">
+      <path d="M20 11.5a8 8 0 0 1-11.8 7L4 19l.6-4.2A8 8 0 1 1 20 11.5z"/>
+      <path d="M9 9.3c.2-.6.4-.6.7-.6h.6c.2 0 .4 0 .5.3l.6 1.5c.1.2.1.4 0 .5l-.4.6c-.1.2-.1.4 0 .5.5 1 1.3 1.7 2.3 2.2.2.1.4.1.5 0l.6-.4c.1-.1.3-.1.5 0l1.5.6c.3.1.3.3.3.5v.6c0 .3 0 .5-.6.7-.8.3-2.6.1-4.4-1.5-1.8-1.6-2.2-3.6-1.8-4.5z"/>
+    </symbol>
+
+    <!-- Phone -->
+    <symbol id="i-phone" viewBox="0 0 24 24">
+      <path d="M22 16.9v3a2 2 0 0 1-2.2 2c-9.6-.9-16.8-8.1-17.7-17.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.6 2.7a2 2 0 0 1-.5 1.8L8 9.4a16 16 0 0 0 6.6 6.6l1.2-1.2a2 2 0 0 1 1.8-.5l2.7.6a2 2 0 0 1 1.7 2z"/>
+    </symbol>
+
+    <!-- Messenger -->
+    <symbol id="i-messenger" viewBox="0 0 24 24">
+      <path d="M12 3c-5 0-9 3.7-9 8.2 0 2.6 1.3 4.9 3.4 6.4V21l3.1-1.7c.8.2 1.6.3 2.5.3 5 0 9-3.7 9-8.4S17 3 12 3z"/>
+      <path d="M7.5 14l3-3 2.2 2 3.8-2.9-3 3-2.2-2L7.5 14z"/>
+    </symbol>
+  </svg>
 
   <script>
     const WHATSAPP_INTL = "201126773698"; // +20 بدون +
@@ -906,7 +1010,7 @@
         "why.quality":"جودة مضمونة",
         "why.qualityDesc":"فرز نظيف وتعبئة منظمة لضمان أفضل تجربة للعميل.",
         "reviews.title":"آراء العملاء",
-        "reviews.desc":"نماذج جاهزة — تقدر تغيّرها أو تضيف المزيد.",
+        "reviews.desc":"",  /* ✅ no extra text */
         "contact.title":"تواصل معنا",
         "contact.desc":"استقبال الطلبات على واتساب: 01126773698",
         "contact.phone":"هاتف",
@@ -962,7 +1066,7 @@
         "why.quality":"Guaranteed Quality",
         "why.qualityDesc":"Clean sorting and organized packing for the best customer experience.",
         "reviews.title":"Customer Reviews",
-        "reviews.desc":"Sample reviews — you can edit or add more anytime.",
+        "reviews.desc":"",  /* ✅ no extra text */
         "contact.title":"Contact Us",
         "contact.desc":"Orders via WhatsApp: 01126773698",
         "contact.phone":"Phone",
